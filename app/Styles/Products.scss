@@ -467,6 +467,7 @@
 }
 
 .product_card_cheat_description{
+    margin-top: 20px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
@@ -475,15 +476,5 @@
     font-size: 14px;
     width: 100%;
     height: 40px;
-    color: #a8a8a8;
+    color: #707070;
 }
-
-// .product_card_cheat_name{
-//     display: block;
-//     font-size: 20px;
-//     font-weight: 600;
-//     white-space: nowrap;
-//     text-overflow: ellipsis;
-//     overflow: hidden;
-//     max-width: 170px;
-// }
