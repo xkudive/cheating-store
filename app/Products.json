@@ -1,0 +1,174 @@
+[
+    {
+        "category": "Rust",
+        "name": "Radiance",
+        "avatar": "https://i.imgur.com/Qd7v77J.png",
+        "status" : "Undetected",
+        "rating" : "5.0",
+        "stock": 42,
+        "prices": ["12", "25", "50", "105"]
+    },
+    {
+        "category": "Rust",
+        "name": "Pixel Perfect",
+        "avatar": "https://i.imgur.com/OIoWsHO.png",
+        "status" : "Undetected",
+        "rating" : "5.0",
+        "stock": 47,
+        "prices": ["29.95", "49.95"]
+    },
+    {
+        "category": "Rust",
+        "name": "Surge",
+        "avatar": "https://i.imgur.com/W7kfqgvh.jpg",
+        "status" : "Undetected",
+        "rating" : "5.0",
+        "stock": 42,
+        "prices": ["4", "17", "30"]
+    },
+    {
+        "category": "Rust",
+        "name": "Quantum",
+        "avatar": "https://i.imgur.com/MOog2wtb.jpg",
+        "status" : "Undetected",
+        "rating" : "5.0",
+        "stock": 1,
+        "prices": ["13.95", "59.95", "119.95", "700"]
+    },
+    {
+        "category": "Rust",
+        "name": "Quantum Private",
+        "avatar": "https://i.imgur.com/MOog2wtb.jpg",
+        "status" : "Undetected",
+        "rating" : "5.0",
+        "stock": 1,
+        "prices": ["150", "400"]
+    },
+    {
+        "category": "Rust",
+        "name": "Deceive",
+        "avatar": "https://i.imgur.com/us95y4lh.jpg",
+        "status" : "Undetected",
+        "rating" : "5.0",
+        "stock": 3,
+        "prices": ["6.99", "13.99", "19.99", "39.99"]
+    },
+    {
+        "category": "Valorant",
+        "name": "Shxdow Full Valorant",
+        "avatar": "https://i.imgur.com/HfrjnUO.jpeg",
+        "status" : "Updating",
+        "rating" : "5.0",
+        "stock": 81,
+        "prices": ["8", "15", "25", "50", "200"]
+    },
+    {
+        "category": "Valorant",
+        "name": "Shxdow Lite Valorant",
+        "avatar": "https://i.imgur.com/HfrjnUO.jpeg",
+        "status" : "Updating",
+        "rating" : "5.0",
+        "stock": 48,
+        "prices": ["10", "20", "30", "150"]
+    },
+    {
+        "category": "Escape From Tarkov",
+        "name": "ZSOFTWARE",
+        "avatar": "https://i.imgur.com/JvPqjUA.png",
+        "status" : "Undetected",
+        "rating" : "5.0",
+        "stock": 9,
+        "prices": ["7", "35", "80"]
+    },
+    {
+        "category": "Escape From Tarkov",
+        "name": "Exotic",
+        "avatar": "https://i.imgur.com/69T2BYJ.png",
+        "status" : "Undetected",
+        "rating" : "5.0",
+        "stock": 5,
+        "prices": ["10", "25", "60"]
+    },
+    {
+        "category": "Escape From Tarkov",
+        "name": "Avalanche",
+        "avatar": "https://i.imgur.com/7kchSDE.jpeg",
+        "status" : "Undetected",
+        "rating" : "0.0",
+        "stock": 1,
+        "prices": ["35", "110"]
+    },
+    {
+        "category": "Apex Legends",
+        "name": "Cola",
+        "avatar": "https://media.discordapp.net/attachments/1110586511369449555/1111335055009251460/ColaCheat_Icon_File_White_-_with_box-01.png",
+        "status" : "Undetected",
+        "rating" : "5.0",
+        "stock": 4,
+        "prices": ["5.5", "21", "50"]
+    },
+    {
+        "category": "Fortnite",
+        "name": "Shxdow Fortnite",
+        "avatar": "https://i.imgur.com/HfrjnUO.jpeg",
+        "status" : "Undetected",
+        "rating" : "5.0",
+        "stock": 19,
+        "prices": ["8", "15", "25", "50", "200"]
+    },
+    {
+        "category": "Fortnite",
+        "name": "Cryptic",
+        "avatar": "https://i.imgur.com/eenGe1o.png",
+        "status" : "Undetected",
+        "rating" : "5.0",
+        "stock": 1,
+        "prices": ["55", "120", "300"]
+    },
+    {
+        "category": "CoD MW2",
+        "name": "Shxdow MW2",
+        "avatar": "https://i.imgur.com/HfrjnUO.jpeg",
+        "status" : "Undetected",
+        "rating" : "5.0",
+        "stock": 967,
+        "prices": ["10", "20"]
+    },
+    {
+        "category": "Rainbow Six",
+        "name": "Shxdow Full MW2",
+        "avatar": "https://i.imgur.com/HfrjnUO.jpeg",
+        "status" : "Updating",
+        "rating" : "5.0",
+        "stock": 14,
+        "prices": ["8", "25", "50"]
+    },
+    {
+        "category": "Spoofer",
+        "name": "Shxdow Temp Spoofer",
+        "avatar": "https://i.imgur.com/HfrjnUO.jpeg",
+        "status" : "Updating",
+        "rating" : "5.0",
+        "stock": 28,
+        "prices": ["4", "10", "20"]
+    },
+    {
+        "category": "Spoofer",
+        "name": "Shxdow Perm Spoofer",
+        "avatar": "https://i.imgur.com/HfrjnUO.jpeg",
+        "status" : "Updating",
+        "rating" : "5.0",
+        "stock": 85,
+        "prices": ["10", "35"]
+    },
+    {
+        "category": "Spoofer",
+        "name": "JewishTricks",
+        "avatar": "https://i.imgur.com/ysHqVJb.png",
+        "status" : "Undetected",
+        "rating" : "5.0",
+        "stock": 3,
+        "prices": ["72"]
+    }
+
+]

@@ -1,0 +1,124 @@
+.navbar {
+  z-index: 1000;
+  position: relative;
+  opacity: 0;
+  animation: navbarReveal 0.4s 0.8s cubic-bezier(0.23, 0.6, 0.64, 1) forwards;
+}
+.navbar .container {
+  display: flex;
+  align-items: center;
+  padding: 12px 32px;
+  justify-content: space-between;
+}
+.navbar .container > a {
+  display: flex;
+}
+.navbar .container img {
+  width: 64px;
+  height: 64px;
+  transition: 0.3s cubic-bezier(0.23, 0.6, 0.64, 1);
+}
+.navbar .container img:hover {
+  scale: 1.15;
+}
+
+@keyframes navbarReveal {
+  from {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+.navbar_ul {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.navbar_ul a {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 12px 24px;
+  font-weight: 500;
+}
+.navbar_ul a:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  background: #fff;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  border-radius: 16px;
+  transition: 0.4s cubic-bezier(0.23, 0.6, 0.64, 1);
+}
+.navbar_ul a li {
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.38, 0.68, 0.43, 0.89), color 0.4s 0.4s cubic-bezier(0.23, 0.6, 0.64, 1);
+}
+.navbar_ul a li:first-child {
+  transform: translateY(0);
+}
+.navbar_ul a li:last-child {
+  position: absolute;
+  transform: translateY(48px);
+}
+.navbar_ul a:hover:before {
+  opacity: 0.2;
+  transition-delay: 0.4s;
+}
+.navbar_ul a:hover li:first-child {
+  transform: translateY(-48px);
+}
+.navbar_ul a:hover li:last-child {
+  transform: translateY(0px);
+  color: #bbbbbb;
+}
+
+.authorization {
+  display: flex;
+  gap: 32px;
+  position: relative;
+  align-items: center;
+}
+
+.login {
+  border-radius: 16px;
+  border: 1px solid #dadada;
+  padding: 12px 24px;
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s ease;
+}
+.login:hover {
+  color: #fff;
+  border: 1px solid #385bb3;
+}
+.login:hover:before {
+  opacity: 1;
+  transform: translate(-30px, -30px);
+}
+.login:active {
+  scale: 0.9;
+}
+.login:before {
+  content: "";
+  position: absolute;
+  background: #385bb3;
+  transform: translate(60px, 60px);
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: -1;
+  transition: 0.4s cubic-bezier(0.23, 0.6, 0.64, 1);
+}
+
+/*# sourceMappingURL=Navbar.css.map */
