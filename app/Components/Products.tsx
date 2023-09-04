@@ -2,7 +2,6 @@ import React, { MouseEventHandler } from "react";
 import { motion, AnimatePresence } from "framer-motion"
 import { Link } from "react-router-dom"
 import JsonProducts from "../Products.json"
-import { ReactNode } from "react";
 
 declare module 'react' {
     interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
@@ -21,9 +20,12 @@ interface ProductArray{
     name: string;
     avatar: string;
     status: string;
-    rating: string,
+    rating: string;
     stock: number;
+    subscription: (string)[];
     prices: (string | number)[];
+    description: string;
+    features: (string)[];
 }
 
 interface Id{
@@ -39,6 +41,9 @@ export function ActiveCategory({category, isActive, click}: Category){
 }
 
 export function ProductCard({id, array}: Id){
+
+    let featuresRef = React.useRef(null);
+
     return(
         <motion.div className="product_card"
             initial={{opacity: 0}}
@@ -92,6 +97,21 @@ export function ProductCard({id, array}: Id){
                     </span>
                     <span className="in_stock">In stock <span>{array[parseInt(id)].stock}</span></span>
                 </div>
+                <div className="product_card_cheat_features" ref={featuresRef}>
+                    <motion.div 
+                        className="product_card_cheat_features_container"
+                        dragConstraints={featuresRef}
+                        whileDrag={{cursor: "grabbing"}}
+                        drag="x"
+                    >
+                        {
+                            array[parseInt(id)].features.map((e) => <span>{e}</span>)
+                        }
+                    </motion.div>
+                </div>
+                <div className="product_card_cheat_description">
+                    {array[parseInt(id)].description}
+                </div>
                 <span className="product_view_button"><Link to="/">From {array[parseInt(id)].prices[0]}$</Link></span>
             </div>
         </motion.div>
@@ -102,7 +122,6 @@ export default function Products() {
 
     let [search, setSearch] = React.useState("")
     let [categoryNumber, setCategoryNumber] = React.useState(1);
-    let [render, setRender] = React.useState(0)
     let [categoryName, setCategoryName] = React.useState("All")
     let [newArray, setNewArray] = React.useState<ProductArray[]>()
 
@@ -147,11 +166,9 @@ export default function Products() {
                             placeholder="Radiance, Shxdow, Cola and etc."
                             type="text"
                             value={search} 
-                            
                             onKeyDown={(e) => {
                                 if(e.key.toLowerCase() === "enter") setProducts()
                             }}
-
                             onChange={(e) => {
                                 setSearch(e.target.value)
                             }}

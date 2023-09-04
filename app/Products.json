@@ -6,7 +6,10 @@
         "status" : "Undetected",
         "rating" : "5.0",
         "stock": 42,
-        "prices": ["12", "25", "50", "105"]
+        "subscription": ["1", "3", "7", "30"],
+        "prices": ["12", "25", "50", "105"],
+        "description": "Extremely cheap undetected Rage & Legit cheat with built in HWID spoofer",
+        "features": ["No Recoil", "Debug Camera", "Always Day", "Silent Aim", "Player Esp", "Bullet Tp", "Loot Esp", "Magic Bullet"]
     },
     {
         "category": "Rust",
@@ -15,7 +18,10 @@
         "status" : "Undetected",
         "rating" : "5.0",
         "stock": 47,
-        "prices": ["29.95", "49.95"]
+        "subscription": ["7", "30"],
+        "prices": ["29.95", "49.95"],
+        "description": "Rage/Legit cheat with a Built-In spoofer AVX2 CPU instruction is required Also USB stick is recommended",
+        "features": ["No Recoil", "Debug Camera", "Always Day", "Aim", "Silent Aim", "Player Esp", "Bullet Tp", "Loot Esp", "Animal Esp"]
     },
     {
         "category": "Rust",
@@ -24,7 +30,10 @@
         "status" : "Undetected",
         "rating" : "5.0",
         "stock": 42,
-        "prices": ["4", "17", "30"]
+        "subscription": ["1", "7", "30"],
+        "prices": ["4", "17", "30"],
+        "description": "Legit Cheat",
+        "features": ["Aim", "Loot Esp", "FlyHack", "Always Day"]
     },
     {
         "category": "Rust",
@@ -33,7 +42,10 @@
         "status" : "Undetected",
         "rating" : "5.0",
         "stock": 1,
-        "prices": ["13.95", "59.95", "119.95", "700"]
+        "subscription": ["1", "7", "30", "lifetime"],
+        "prices": ["13.95", "59.95", "119.95", "700"],
+        "description": "Quantum Cheats Rust Product includes a built-in Network Spoofer for QC Rust Cheat.",
+        "features": ["No Recoil", "Debug Camera", "Silent Aim", "FlyHack", "Loot Esp"]
     },
     {
         "category": "Rust",
@@ -42,7 +54,10 @@
         "status" : "Undetected",
         "rating" : "5.0",
         "stock": 1,
-        "prices": ["150", "400"]
+        "subscription": ["30", "lifetime"],
+        "prices": ["150", "400"],
+        "description": "Quantum Cheats Rust Product includes a built-in Network Spoofer for QC Rust Cheat.",
+        "features": ["No Recoil", "Debug Camera", "Silent Aim", "FlyHack", "Loot Esp"]
     },
     {
         "category": "Rust",
@@ -51,7 +66,10 @@
         "status" : "Undetected",
         "rating" : "5.0",
         "stock": 3,
-        "prices": ["6.99", "13.99", "19.99", "39.99"]
+        "subscription": ["1", "3", "7", "30"],
+        "prices": ["6.99", "13.99", "19.99", "39.99"],
+        "description": "Windows 10 Support Only",
+        "features": ["Silent Aim", "Player Esp", "Animal Esp", "Debug Camera"]
     },
     {
         "category": "Valorant",
@@ -60,7 +78,10 @@
         "status" : "Updating",
         "rating" : "5.0",
         "stock": 81,
-        "prices": ["8", "15", "25", "50", "200"]
+        "subscription": ["1", "3", "7", "30"],
+        "prices": ["8", "15", "25", "50", "200"],
+        "description": "The Best Valorant cheat on the Market",
+        "features": ["Aimbot", "Esp", "Radar"]
     },
     {
         "category": "Valorant",
@@ -69,7 +90,10 @@
         "status" : "Updating",
         "rating" : "5.0",
         "stock": 48,
-        "prices": ["10", "20", "30", "150"]
+        "subscription": ["1", "3", "7", "30"],
+        "prices": ["10", "20", "30", "150"],
+        "description": "The Best Valorant ESP on the Market",
+        "features": ["Aimbot", "Esp"]
     },
     {
         "category": "Escape From Tarkov",
@@ -78,7 +102,10 @@
         "status" : "Undetected",
         "rating" : "5.0",
         "stock": 9,
-        "prices": ["7", "35", "80"]
+        "subscription": ["3", "7", "30"],
+        "prices": ["7", "35", "80"],
+        "description": "Cheap and features rich EFT cheats",
+        "features": ["Aimbot", "RCS", "Player Esp", "Loot Esp"]
     },
     {
         "category": "Escape From Tarkov",
@@ -87,7 +114,10 @@
         "status" : "Undetected",
         "rating" : "5.0",
         "stock": 5,
-        "prices": ["10", "25", "60"]
+        "subscription": ["1", "7", "30"],
+        "prices": ["10", "25", "60"],
+        "description": "Cheapest prices and leading developers for the eft scene",
+        "features": ["Aimbot", "RCS", "Player Esp"]
     },
     {
         "category": "Escape From Tarkov",
@@ -96,7 +126,10 @@
         "status" : "Undetected",
         "rating" : "0.0",
         "stock": 1,
-        "prices": ["35", "110"]
+        "subscription": ["7", "30"],
+        "prices": ["35", "110"],
+        "description": "We offer you to buy a private cheat Avalanche for Escape From Tarkov.",
+        "features": ["Aimbot", "RCS", "Player Esp", "Loot Esp"]
     },
     {
         "category": "Apex Legends",
@@ -105,7 +138,22 @@
         "status" : "Undetected",
         "rating" : "5.0",
         "stock": 4,
-        "prices": ["5.5", "21", "50"]
+        "subscription": ["1", "7", "30"],
+        "prices": ["5.5", "21", "50"],
+        "description": "🟢Apex COLA🟢UNDETECTED [Aimbot + ESP + More]",
+        "features": ["Aimbot", "Player Esp", "Loot Esp"]
+    },
+    {
+        "category": "Apex Legends",
+        "name": "Apex Lite",
+        "avatar": "https://i.imgur.com/1FUHLJI.png",
+        "status" : "Undetected",
+        "rating" : "0.0",
+        "stock": 10,
+        "subscription": ["1", "7", "30"],
+        "prices": ["4", "20", "40"],
+        "description": "Full External | Undetected | Closet Cheating | Streamproof | Spoofer Included",
+        "features": ["Aimbot", "Player ESP", "Loot ESp"]
     },
     {
         "category": "Fortnite",
@@ -114,7 +162,10 @@
         "status" : "Undetected",
         "rating" : "5.0",
         "stock": 19,
-        "prices": ["8", "15", "25", "50", "200"]
+        "subscription": ["1", "3", "7", "30", "lifetime"],
+        "prices": ["8", "15", "25", "50", "200"],
+        "description": "Tournament UD Fortnite Cheat That Has Aimbot, Esp, and many other cool features",
+        "features": ["Aimbot", "Player ESP", "Trigger"]
     },
     {
         "category": "Fortnite",
@@ -123,7 +174,10 @@
         "status" : "Undetected",
         "rating" : "5.0",
         "stock": 1,
-        "prices": ["55", "120", "300"]
+        "subscription": ["7", "30", "lifetime"],
+        "prices": ["55", "120", "300"],
+        "description": "Best Private Fortnite Cheat Out There More Info In Discord: https://discord.gg/VWZVVw2BjK",
+        "features": ["Aimbot", "Player Esp", "Loot Esp"]
     },
     {
         "category": "CoD MW2",
@@ -132,7 +186,10 @@
         "status" : "Undetected",
         "rating" : "5.0",
         "stock": 967,
-        "prices": ["10", "20"]
+        "subscription": ["7", "30"],
+        "prices": ["10", "20"],
+        "description": "The Best MW2 Cheat",
+        "features": ["Aimbot", "Player Esp", "Loot Esp"]
     },
     {
         "category": "Rainbow Six",
@@ -141,7 +198,10 @@
         "status" : "Updating",
         "rating" : "5.0",
         "stock": 14,
-        "prices": ["8", "25", "50"]
+        "subscription": ["1", "7", "30"],
+        "prices": ["8", "25", "50"],
+        "description": "One of the ONLY UD cheats On The R6 Market (Supports Win 10+11)",
+        "features": ["Aimbot", "Player Esp", "Loot Esp"]
     },
     {
         "category": "Spoofer",
@@ -150,7 +210,10 @@
         "status" : "Updating",
         "rating" : "5.0",
         "stock": 28,
-        "prices": ["4", "10", "20"]
+        "subscription": ["1", "7", "30"],
+        "prices": ["4", "10", "20"],
+        "description": "The Cheapest Temp Spoofer That Supports Many Games",
+        "features": ["EAC", "BE", "RicoChet"]
     },
     {
         "category": "Spoofer",
@@ -159,7 +222,10 @@
         "status" : "Updating",
         "rating" : "5.0",
         "stock": 85,
-        "prices": ["10", "35"]
+        "subscription": ["1", "30"],
+        "prices": ["10", "35"],
+        "description": "Perm Spoofer that supports basically every game",
+        "features": ["Vanguard", "EAC", "BE", "RicoChet"]
     },
     {
         "category": "Spoofer",
@@ -168,7 +234,10 @@
         "status" : "Undetected",
         "rating" : "5.0",
         "stock": 3,
-        "prices": ["72"]
+        "subscription": ["lifetime"],
+        "prices": ["72"],
+        "description": "Made for HOI4",
+        "features": ["MAC", "HWID"]
     }
 
 ]
