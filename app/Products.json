@@ -9,7 +9,7 @@
         "subscription": ["1", "3", "7", "30"],
         "prices": ["12", "25", "50", "105"],
         "description": "Extremely cheap undetected Rage & Legit cheat with built in HWID spoofer",
-        "features": ["No Recoil", "Debug Camera", "Always Day", "Silent Aim", "Player Esp", "Bullet Tp", "Loot Esp", "Magic Bullet"]
+        "features": ["Bunnyhop", "No Recoil", "Debug Camera", "Always Day", "Silent Aim", "Player Esp", "Bullet Tp", "Loot Esp", "Magic Bullet"]
     },
     {
         "category": "Rust",
@@ -193,7 +193,7 @@
     },
     {
         "category": "Rainbow Six",
-        "name": "Shxdow Full MW2",
+        "name": "Shxdow Full R6",
         "avatar": "https://i.imgur.com/HfrjnUO.jpeg",
         "status" : "Updating",
         "rating" : "5.0",
