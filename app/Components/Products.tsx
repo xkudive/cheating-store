@@ -3,8 +3,6 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Link } from "react-router-dom"
 import JsonProducts from "../Products.json"
 
-import arrow from "../images/arrow_link.svg"
-
 declare module 'react' {
     interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
       category?: string;
@@ -24,8 +22,9 @@ interface ProductArray{
     status: string;
     rating: (string)[];
     stock: number;
+    bans_per_month: string;
     subscription: (string)[];
-    prices: (string | number)[];
+    prices: (string)[];
     description: string;
     features: (string)[];
 }
@@ -62,10 +61,10 @@ export function FilterRating({category, isActive, click}: Category){
     function checkCategory() {
         if (category === "Any") return "Any"
         else if (category === "1") return "> 1 star"
-        else if (category === "2") return "> 2 star"
-        else if (category === "3") return "> 3 star"
-        else if (category === "4") return "> 4 star"
-        else if (category === "5") return "5 star"
+        else if (category === "2") return "> 2 stars"
+        else if (category === "3") return "> 3 stars"
+        else if (category === "4") return "> 4 stars"
+        else if (category === "5") return "5 stars"
     }
 
     return(
@@ -135,6 +134,9 @@ export function ProductCard({id, array}: Id){
                     </span>
                     <span className="in_stock">In stock <span>{array[parseInt(id)].stock}</span></span>
                 </div>
+                <div className="product_card_cheats_about">
+                    <span className="bans_per_month">Bans per month <span>{array[parseInt(id)].bans_per_month}</span></span>
+                </div>
                 <div className="product_card_cheat_features" ref={featuresRef}>
                     <motion.div 
                         className="product_card_cheat_features_container"
@@ -167,6 +169,7 @@ export default function Products() {
 
     let [priceFrom, setPriceFrom] = React.useState("");
     let [priceTo, setPriceTo] = React.useState("");
+    let [bansPerMonth, setBansPerMonth] = React.useState("");
     let [featureSelect, setFeatureSelect] = React.useState("");
     let [filterSubscriptionDropdownActive, setFilterSubscriptionDropdownActive] = React.useState(false);
     let [filterSubscriptionNumber, setFilterSubscriptionNumber] = React.useState(1);
@@ -196,10 +199,10 @@ export default function Products() {
 
     function filterRatingCategoryCheck() {
         if (filterRatingName === "1") return "> 1 star"
-        else if (filterRatingName === "2") return "> 2 star"
-        else if (filterRatingName === "3") return "> 3 star"
-        else if (filterRatingName === "4") return "> 4 star"
-        else if (filterRatingName === "5") return "5 star"
+        else if (filterRatingName === "2") return "> 2 stars"
+        else if (filterRatingName === "3") return "> 3 stars"
+        else if (filterRatingName === "4") return "> 4 stars"
+        else if (filterRatingName === "5") return "5 stars"
         else return filterRatingName;
     }
 
@@ -234,23 +237,37 @@ export default function Products() {
     let [applyFeature, setApplyFeature] = React.useState(false);
     let [applySubscription, setApplySubscription] = React.useState(false);
     let [applyRating, setApplyRating] = React.useState(false);
+    let [applyBpm, setApplyBpm] = React.useState(false);
 
     function submittingFilters(newArray: ProductArray[]) {
         let filtered = newArray || JsonProducts;
+        if (applyPrice !== false) {
+            let filter = filtered?.filter((e) => {
+                return (e.prices.map((elem) => parseInt(elem))[0] >= parseInt(priceFrom) && e.prices.map((elem) => parseInt(elem))[0] <= parseInt(priceTo)) || (e.prices.map((elem) => parseInt(elem))[e.prices.length-1] >= parseInt(priceFrom) && e.prices.map((elem) => parseInt(elem))[e.prices.length-1] <= parseInt(priceTo))
+            });
+            filtered = [...filter]
+        }
         if (applyFeature !== false) {
-            let filter = filtered?.filter((e) => e.features.map(e => e.replaceAll(" ", "").toLowerCase()).includes(featureSelect.replaceAll(" ", "").toLowerCase()));
+            let filter = filtered?.filter((e) => e.features.map(elem => elem.replaceAll(" ", "").toLowerCase()).includes(featureSelect.replaceAll(" ", "").toLowerCase()));
             filtered = [...filter]
         }
         if(applySubscription !== false) {
-            let filter = filtered?.filter((e) => e.subscription.map(e => e.replaceAll(" ", "").toLowerCase()).includes(filterSubscriptionName.replaceAll(" ", "").toLowerCase()));
+            let filter = filtered?.filter((e) => e.subscription.map(elem => elem.replaceAll(" ", "").toLowerCase()).includes(filterSubscriptionName.replaceAll(" ", "").toLowerCase()));
             filtered = [...filter]
         }
         if(applyRating !== false) {
-            let filter = filtered?.filter((e) => (e.rating.length !== 0 ? (e.rating.map(e => parseInt(e)).reduce((acc: number, number: number) => acc + number, 0) / e.rating.length) : 0) >= parseInt(filterRatingName));
+            let filter = filtered?.filter((e) => (e.rating.length !== 0 ? (e.rating.map(elem => parseInt(elem)).reduce((acc: number, number: number) => acc + number, 0) / e.rating.length) : 0) >= parseInt(filterRatingName));
+            filtered = [...filter]
+        }
+        if(applyBpm !== false) {
+            let filter = filtered?.filter((e) => parseInt(e.bans_per_month)  <= parseInt(bansPerMonth));
             filtered = [...filter]
         }
         setNewArray(filtered)
     }
+    React.useEffect(() => {
+        getProducts()
+    }, [applyPrice])
     React.useEffect(() => {
         getProducts()
     }, [applyFeature])
@@ -260,6 +277,9 @@ export default function Products() {
     React.useEffect(() => {
         getProducts()
     }, [applyRating])
+    React.useEffect(() => {
+        getProducts()
+    }, [applyBpm])
 
 
     return(
@@ -366,6 +386,22 @@ export default function Products() {
                                             setApplyRating(false);
                                         }}>
                                             <span>{filterRatingCategoryCheck()}</span>
+                                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Menu / Close_SM"> <path id="Vector" d="M16 16L12 12M12 12L8 8M12 12L16 8M12 12L8 16" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path> </g> </g></svg>
+                                        </motion.div>
+                                    }
+                                </AnimatePresence>
+                                <AnimatePresence initial={false}>
+                                    {(bansPerMonth !== "" && applyBpm) &&
+                                        <motion.div 
+                                        initial={{opacity: 0}}
+                                        animate={{opacity: 1}}
+                                        exit={{opacity: 0}}
+                                        key={applyBpm + ""}
+                                        onClick={() => {
+                                            setBansPerMonth("")
+                                            setApplyBpm(false);
+                                        }}>
+                                            <span>{"< " + bansPerMonth} BPM</span>
                                             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Menu / Close_SM"> <path id="Vector" d="M16 16L12 12M12 12L8 8M12 12L16 8M12 12L8 16" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path> </g> </g></svg>
                                         </motion.div>
                                     }
@@ -583,11 +619,31 @@ export default function Products() {
                                     }
                                 </AnimatePresence>
                             </div>
+                            <div className="filter_bpm">
+                                <span className="filter_title">Max. Bans per month:</span>
+                                <input
+                                        className="filter_input_field bpm_input"
+                                        placeholder="Bans per month"
+                                        type="text" 
+                                        value={bansPerMonth}
+                                        maxLength={4}
+                                        onChange={(e) => {
+                                            let text = (e.target.value).replaceAll(/[^0-9]/g, "");
+                                            setBansPerMonth(text)
+                                            setApplyBpm(false)
+                                        }}
+                                        onBlur={(e) => {
+                                            let text = (e.target.value).replaceAll(/[^0-9]/g, "");
+                                            setBansPerMonth(text)
+                                        }}
+                                    />
+                            </div>
                             <div className="filters_apply" onClick={() => {
                                 if (priceFrom !== "" && priceTo !== "") setApplyPrice(true);
                                 if (featureSelect !== "") setApplyFeature(true);
                                 if(filterSubscriptionName !== "Any") setApplySubscription(true);
                                 if(filterRatingName !== "Any") setApplyRating(true);
+                                if(bansPerMonth !== "") setApplyBpm(true);
                                 setShowToggle((showToggle) => !showToggle)
                                 setFilterSubscriptionDropdownActive(false)
                                 setFilterRatingDropdownActive(false)

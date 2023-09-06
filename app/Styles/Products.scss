@@ -358,6 +358,13 @@
     }
 }
 
+.bans_per_month{
+    margin-top: 2px;
+    span{
+        color: #ac5050;
+    }
+}
+
 .product_undetected{
     color: #50ac79;
 
@@ -569,6 +576,7 @@
     height: auto;
     display: flex;
     gap: 48px;
+    row-gap: 24px;
     align-items: flex-end;
     justify-content: center;
     transition: 0.4s ease;
@@ -639,6 +647,17 @@
     gap: 16px;
 }
 
+.filter_bpm{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.bpm_input{
+    width: 240px;
+}
+
 .filter_subscription_dropdown_menu{
     z-index: 3;
     display: flex;
@@ -666,7 +685,7 @@
     outline: none;
     border: 1px solid rgba(120, 120, 120, 0.4);
     background: rgba(80, 80, 80, 0.4);
-    color: #767b83;
+    color: #A9A9A9;
     font: inherit;
     font-weight: 400;
     cursor: pointer; 
