@@ -247,12 +247,16 @@ export default function Products() {
         }
         if(applyRating !== false) {
             let filter = filtered?.filter((e) => (e.rating.length !== 0 ? (e.rating.map(e => parseInt(e)).reduce((acc: number, number: number) => acc + number, 0) / e.rating.length) : 0) >= parseInt(filterRatingName));
-            console.log(filter)
             filtered = [...filter]
         }
         setNewArray(filtered)
     }
-
+    React.useEffect(() => {
+        getProducts()
+    }, [applyFeature])
+    React.useEffect(() => {
+        getProducts()
+    }, [applySubscription])
     React.useEffect(() => {
         getProducts()
     }, [applyRating])
