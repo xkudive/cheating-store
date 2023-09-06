@@ -1,18 +1,16 @@
-import React, { MouseEventHandler } from "react";
+import React from "react";
 import { motion, AnimatePresence } from "framer-motion"
-import { Link } from "react-router-dom"
 import JsonProducts from "../Products.json"
+
+import ProductCard from "./Products/ProductCard"
+import ActiveCategory from "./Products/ActiveCategory"
+import FilterSubscription from "./Products/FilterSubscription"
+import FilterRating from "./Products/FilterRating"
 
 declare module 'react' {
     interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
       category?: string;
     }
-  }
-
-interface Category {
-    category: string;
-    isActive: boolean;
-    click: MouseEventHandler;
 }
 
 interface ProductArray{
@@ -29,151 +27,26 @@ interface ProductArray{
     features: (string)[];
 }
 
-interface Id{
-    id: string;
-    array: ProductArray[];
-}
-
-
-export function ActiveCategory({category, isActive, click}: Category){
-    return(
-        <span onClick={click} className={`category ${isActive ? "active" : ""}`} category={category}>{category}</span>
-    )
-}
-
-export function FilterSubscription({category, isActive, click}: Category){
-
-    function checkCategory() {
-        if (category === "1") return "1 day"
-        else if (category === "3") return "3 days"
-        else if (category === "7") return "1 week"
-        else if (category === "30") return "1 month"
-        else return category;
-    }
-
-    return(
-        <span onClick={click} className={`filter_subscription_element ${isActive ? "active" : ""}`} category={category}>{checkCategory()}</span>
-    )
-}
-
-export function FilterRating({category, isActive, click}: Category){
-
-    function checkCategory() {
-        if (category === "Any") return "Any"
-        else if (category === "1") return "> 1 star"
-        else if (category === "2") return "> 2 stars"
-        else if (category === "3") return "> 3 stars"
-        else if (category === "4") return "> 4 stars"
-        else if (category === "5") return "5 stars"
-    }
-
-    return(
-        <span onClick={click} className={`filter_subscription_element ${isActive ? "active" : ""}`} category={category}>{checkCategory()}</span>
-    )
-}
-
-export function ProductCard({id, array}: Id){
-
-    let featuresRef = React.useRef(null);
-
-    return(
-        <motion.div className="product_card"
-            initial={{opacity: 0}}
-            animate={{opacity: 1}}
-            exit={{opacity: 0}}
-        >
-            <div className="product_card_info">
-                <div className="product_card_text">
-                        <div className="product_card_cheat_logo">
-                            <img src={array[parseInt(id)].avatar} alt="" />
-                        </div>
-                    <div className="product_card_cheat_info">
-                        <div className="product_card_name">
-                            <span className="product_card_cheat_name">{array[parseInt(id)].name}</span>
-                        </div>
-                        <div className="product_card_cheats_price">
-                            <span className="product_category">{array[parseInt(id)].category}</span>
-                            <span className="product_dot">
-                                <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none">
-                                    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                                    <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
-                                    <g id="SVGRepo_iconCarrier">
-                                        <path fill="#000000" d="M8 3a5 5 0 100 10A5 5 0 008 3z"></path>
-                                    </g>
-                                </svg>
-                            </span>
-                            <span className={`product_undetected ${array[parseInt(id)].status === "Undetected" ? "undetected" : "detected"}`}>{array[parseInt(id)].status}</span>
-                        </div>
-                    </div>
-                </div>
-                <div className="product_card_cheats_about">
-                    <span className="product_card_cheat_rating">
-                        Rating 
-                        <svg viewBox="0 0 24 24" fill="#000" xmlns="http://www.w3.org/2000/svg">
-                            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                            <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
-                            <g id="SVGRepo_iconCarrier">
-                                <path d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
-                            </g>
-                        </svg>
-                        <span>
-                            {
-                                array[parseInt(id)].rating.length === 0 ? "0.0" :
-                                (array[parseInt(id)].rating.map((e) => parseFloat(e)).reduce((acc: number, number: number) => acc + number, 0)/array[parseInt(id)].rating.length).toFixed(1)
-                            }
-                        </span>
-                    </span>
-                    <span className="product_dot">
-                        <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none">
-                            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                            <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
-                            <g id="SVGRepo_iconCarrier">
-                                <path fill="#000000" d="M8 3a5 5 0 100 10A5 5 0 008 3z"></path>
-                            </g>
-                        </svg>
-                    </span>
-                    <span className="in_stock">In stock <span>{array[parseInt(id)].stock}</span></span>
-                </div>
-                <div className="product_card_cheats_about">
-                    <span className="bans_per_month">Bans per month <span>{array[parseInt(id)].bans_per_month}</span></span>
-                </div>
-                <div className="product_card_cheat_features" ref={featuresRef}>
-                    <motion.div 
-                        className="product_card_cheat_features_container"
-                        dragConstraints={featuresRef}
-                        whileDrag={{cursor: "grabbing"}}
-                        drag="x"
-                    >
-                        {
-                            array[parseInt(id)].features.map((e,i) => <span key={"span"+i}>{e}</span>)
-                        }
-                    </motion.div>
-                </div>
-                <div className="product_card_cheat_description">
-                    {array[parseInt(id)].description}
-                </div>
-                <span className="product_view_button"><Link to="/">From {array[parseInt(id)].prices[0]}$</Link></span>
-            </div>
-        </motion.div>
-    )
-}
-
 export default function Products() {
 
-    let [search, setSearch] = React.useState("")
+    let [search, setSearch] = React.useState("");
 
     let [categoryNumber, setCategoryNumber] = React.useState(1);
-    let [categoryName, setCategoryName] = React.useState("All")
+    let [categoryName, setCategoryName] = React.useState("All");
 
-    let [newArray, setNewArray] = React.useState<ProductArray[]>()
+    let [newArray, setNewArray] = React.useState<ProductArray[]>();
 
     let [priceFrom, setPriceFrom] = React.useState("");
     let [priceTo, setPriceTo] = React.useState("");
+
     let [bansPerMonth, setBansPerMonth] = React.useState("");
+
     let [featureSelect, setFeatureSelect] = React.useState("");
+
     let [filterSubscriptionDropdownActive, setFilterSubscriptionDropdownActive] = React.useState(false);
     let [filterSubscriptionNumber, setFilterSubscriptionNumber] = React.useState(1);
     let [filterSubscriptionName, setFilterSubscriptionName] = React.useState("Any");
+
     let [filterRatingDropdownActive, setFilterRatingDropdownActive] = React.useState(false);
     let [filterRatingNumber, setFilterRatingNumber] = React.useState(1);
     let [filterRatingName, setFilterRatingName] = React.useState("Any");
@@ -181,41 +54,41 @@ export default function Products() {
     function getProducts() {
         if(categoryName === "All"){
             setNewArray([...JsonProducts]);
-            submittingFilters([...JsonProducts])
+            submittingFilters([...JsonProducts]);
         } else {
             setNewArray(JsonProducts.filter((e) => e.category.toLowerCase() === categoryName.toLowerCase()));
-            submittingFilters(JsonProducts.filter((e) => e.category.toLowerCase() === categoryName.toLowerCase()))
+            submittingFilters(JsonProducts.filter((e) => e.category.toLowerCase() === categoryName.toLowerCase()));
         }
     }
 
     function setProducts() {
         if(search === ""){
-            getProducts()
+            getProducts();
         } else {
             setNewArray(JsonProducts.filter((e) => e.name.toLowerCase().includes(search.toLowerCase())));
-            submittingFilters(JsonProducts.filter((e) => e.name.toLowerCase().includes(search.toLowerCase())))
+            submittingFilters(JsonProducts.filter((e) => e.name.toLowerCase().includes(search.toLowerCase())));
         }
     }
 
     function filterRatingCategoryCheck() {
-        if (filterRatingName === "1") return "> 1 star"
-        else if (filterRatingName === "2") return "> 2 stars"
-        else if (filterRatingName === "3") return "> 3 stars"
-        else if (filterRatingName === "4") return "> 4 stars"
-        else if (filterRatingName === "5") return "5 stars"
+        if (filterRatingName === "1") return "> 1 star";
+        else if (filterRatingName === "2") return "> 2 stars";
+        else if (filterRatingName === "3") return "> 3 stars";
+        else if (filterRatingName === "4") return "> 4 stars";
+        else if (filterRatingName === "5") return "5 stars";
         else return filterRatingName;
     }
 
     function filterSubscriptionCategoryCheck() {
-        if (filterSubscriptionName === "1") return "1 day"
-        else if (filterSubscriptionName === "3") return "3 days"
-        else if (filterSubscriptionName === "7") return "1 week"
-        else if (filterSubscriptionName === "30") return "1 month"
+        if (filterSubscriptionName === "1") return "1 day";
+        else if (filterSubscriptionName === "3") return "3 days";
+        else if (filterSubscriptionName === "7") return "1 week";
+        else if (filterSubscriptionName === "30") return "1 month";
         else return filterSubscriptionName;
     }
 
     React.useEffect(() => {
-        getProducts()
+        getProducts();
     }, [categoryName])
 
     let filtersContentRef = React.useRef<HTMLDivElement>(null);
@@ -225,7 +98,7 @@ export default function Products() {
     React.useEffect(() => {
         function getShowHeight(){
             let ref = filtersContentRef.current;
-            let currentHeight = ref?.scrollHeight
+            let currentHeight = ref?.scrollHeight;
             setHeight(currentHeight || 0);
         }
         getShowHeight()
@@ -241,10 +114,11 @@ export default function Products() {
 
     function submittingFilters(newArray: ProductArray[]) {
         let filtered = newArray || JsonProducts;
+
         if (applyPrice !== false) {
             let filter = filtered?.filter((e) => {
-                return (e.prices.map((elem) => parseInt(elem))[0] >= parseInt(priceFrom) && e.prices.map((elem) => parseInt(elem))[0] <= parseInt(priceTo)) || (e.prices.map((elem) => parseInt(elem))[e.prices.length-1] >= parseInt(priceFrom) && e.prices.map((elem) => parseInt(elem))[e.prices.length-1] <= parseInt(priceTo))
-            });
+                return (e.prices.map((elem) => parseInt(elem))[0] >= parseInt(priceFrom) && e.prices.map((elem) => parseInt(elem))[0] <= parseInt(priceTo)) || (e.prices.map((elem) => parseInt(elem))[e.prices.length-1] >= parseInt(priceFrom) && e.prices.map((elem) => parseInt(elem))[e.prices.length-1] <= parseInt(priceTo));
+            })
             filtered = [...filter]
         }
         if (applyFeature !== false) {
@@ -265,20 +139,21 @@ export default function Products() {
         }
         setNewArray(filtered)
     }
+
     React.useEffect(() => {
-        getProducts()
+        getProducts();
     }, [applyPrice])
     React.useEffect(() => {
-        getProducts()
+        getProducts();
     }, [applyFeature])
     React.useEffect(() => {
-        getProducts()
+        getProducts();
     }, [applySubscription])
     React.useEffect(() => {
-        getProducts()
+        getProducts();
     }, [applyRating])
     React.useEffect(() => {
-        getProducts()
+        getProducts();
     }, [applyBpm])
 
 
@@ -304,13 +179,13 @@ export default function Products() {
                             type="text"
                             value={search} 
                             onKeyDown={(e) => {
-                                if(e.key.toLowerCase() === "enter") setProducts()
+                                if(e.key.toLowerCase() === "enter") setProducts();
                             }}
                             onChange={(e) => {
-                                setSearch(e.target.value)
+                                setSearch(e.target.value);
                             }}
                             onBlur={(e) => {
-                                setSearch(e.target.value)
+                                setSearch(e.target.value);
                             }}
                         />
                         <span className="search_button" onClick={() => {
@@ -331,8 +206,8 @@ export default function Products() {
                                         exit={{opacity: 0}}
                                         key={applyPrice+""}
                                         onClick={() => {
-                                            setPriceFrom("")
-                                            setPriceTo("")
+                                            setPriceFrom("");
+                                            setPriceTo("");
                                             setApplyPrice(false);
                                         }}>
                                             <span>{priceFrom}$ - {priceTo}$</span>
@@ -347,8 +222,8 @@ export default function Products() {
                                         animate={{opacity: 1}}
                                         exit={{opacity: 0}}
                                         key={applyFeature+""}
-                                        onClick={() => {
-                                            setFeatureSelect("")
+                                        onClick={() => {;
+                                            setFeatureSelect("");
                                             setApplyFeature(false);
                                         }}>
                                             <span>{featureSelect}</span>
@@ -364,8 +239,8 @@ export default function Products() {
                                         exit={{opacity: 0}}
                                         key={applySubscription+""}
                                         onClick={() => {
-                                            setFilterSubscriptionName("Any")
-                                            setFilterSubscriptionNumber(1)
+                                            setFilterSubscriptionName("Any");
+                                            setFilterSubscriptionNumber(1);
                                             setApplySubscription(false);
                                         }}>
                                             <span>{filterSubscriptionCategoryCheck()}</span>
@@ -381,8 +256,8 @@ export default function Products() {
                                         exit={{opacity: 0}}
                                         key={applyRating+""}
                                         onClick={() => {
-                                            setFilterRatingName("Any")
-                                            setFilterRatingNumber(1)
+                                            setFilterRatingName("Any");
+                                            setFilterRatingNumber(1);
                                             setApplyRating(false);
                                         }}>
                                             <span>{filterRatingCategoryCheck()}</span>
@@ -398,7 +273,7 @@ export default function Products() {
                                         exit={{opacity: 0}}
                                         key={applyBpm + ""}
                                         onClick={() => {
-                                            setBansPerMonth("")
+                                            setBansPerMonth("");
                                             setApplyBpm(false);
                                         }}>
                                             <span>{"< " + bansPerMonth} BPM</span>
@@ -409,9 +284,9 @@ export default function Products() {
                             </div>
                         </div>
                         <div className="filter_button" onClick={() => {
-                            setShowToggle((showToggle) => !showToggle)
-                            setFilterSubscriptionDropdownActive(false)
-                            setFilterRatingDropdownActive(false)
+                            setShowToggle((showToggle) => !showToggle);
+                            setFilterSubscriptionDropdownActive(false);
+                            setFilterRatingDropdownActive(false);
                         }}>
                             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
@@ -435,14 +310,14 @@ export default function Products() {
                                         maxLength={5}
                                         onChange={(e) => {
                                             let text = (e.target.value).replaceAll(/[^0-9]/g, "");
-                                            setPriceFrom(text)
-                                            setApplyPrice(false)
+                                            setPriceFrom(text);
+                                            setApplyPrice(false);
                                         }}
                                         onBlur={(e) => {
                                             let text = e.target.value;
                                             if(text === "") {
-                                                setPriceTo("") 
-                                                setPriceFrom("")
+                                                setPriceTo("");
+                                                setPriceFrom("");
                                                 return
                                             }
                                             if(text === "" && priceTo === "") return 
@@ -452,7 +327,7 @@ export default function Products() {
                                             if (parseInt(priceTo) <= parseInt(text)) {
                                                 setPriceTo(parseInt(text) + 1 + "");
                                             }
-                                            setPriceFrom(parseInt(text)+"")
+                                            setPriceFrom(parseInt(text) + "");
                                         }}
                                     />
                                     <span>-</span>
@@ -464,20 +339,20 @@ export default function Products() {
                                         maxLength={5}
                                         onChange={(e) => {
                                             let text = (e.target.value).replaceAll(/[^0-9.]/g, "");
-                                            setPriceTo(text)
-                                            setApplyPrice(false)
+                                            setPriceTo(text);
+                                            setApplyPrice(false);
                                         }}
                                         onBlur={(e) => {
                                             let text = e.target.value;
                                             if(text === "") {
-                                                setPriceTo("") 
-                                                setPriceFrom("")
+                                                setPriceTo("");
+                                                setPriceFrom("");
                                                 return
                                             }
                                             if(text === "" && priceFrom === "") return  
                                             if (text === "0") {
-                                                text = "1"
-                                                setPriceTo(text)
+                                                text = "1";
+                                                setPriceTo(text);
                                             }
                                             if (priceFrom === "") {
                                                 setPriceFrom("0");
@@ -485,7 +360,7 @@ export default function Products() {
                                             if (parseInt(text) <= parseInt(priceFrom)) {
                                                 setPriceFrom(parseInt(text) - 1 + "");
                                             }
-                                            setPriceTo(parseInt(text)+"")
+                                            setPriceTo(parseInt(text)+"");
                                         }}
                                     />
                                 </div>
@@ -500,20 +375,20 @@ export default function Products() {
                                         maxLength={16}
                                         onChange={(e) => {
                                             let text = (e.target.value).replaceAll(/[^a-zA-Z ]/g, "");
-                                            setFeatureSelect(text)
-                                            setApplyFeature(false)
+                                            setFeatureSelect(text);
+                                            setApplyFeature(false);
                                         }}
                                         onBlur={(e) => {
                                             let text = (e.target.value).replaceAll(/[^a-zA-Z_ ]/g, "").trim().split(/[\s,\t,\n]+/).join(' ');
-                                            setFeatureSelect(text)
+                                            setFeatureSelect(text);
                                         }}
                                     />
                             </div>
                             <div className="filter_subscription">
                                 <span className="filter_title">Subscription:</span>
                                 <div className={`filter_subscription_button ${filterSubscriptionDropdownActive ? " active" : ""}`} onClick={() => {
-                                        setFilterSubscriptionDropdownActive((filterSubscriptionDropdownActive) => !filterSubscriptionDropdownActive)
-                                        setApplySubscription(false)
+                                        setFilterSubscriptionDropdownActive((filterSubscriptionDropdownActive) => !filterSubscriptionDropdownActive);
+                                        setApplySubscription(false);
                                     }}>
                                     {
                                         filterSubscriptionCategoryCheck()
@@ -532,33 +407,33 @@ export default function Products() {
                                         >
                                             <FilterSubscription category="Any" isActive={filterSubscriptionNumber=== 1} click={(e) => {
                                                 let evt = e.currentTarget as HTMLInputElement;
-                                                setFilterSubscriptionName(evt.getAttribute("category") || "Any")
-                                                setFilterSubscriptionNumber(1)
+                                                setFilterSubscriptionName(evt.getAttribute("category") || "Any");
+                                                setFilterSubscriptionNumber(1);
                                             }} />
                                             <FilterSubscription category="1" isActive={filterSubscriptionNumber === 2} click={(e) => {
                                                 let evt = e.currentTarget as HTMLInputElement;
-                                                setFilterSubscriptionName(evt.getAttribute("category") || "Any")
-                                                setFilterSubscriptionNumber(2)
+                                                setFilterSubscriptionName(evt.getAttribute("category") || "Any");
+                                                setFilterSubscriptionNumber(2);
                                             }} />
                                             <FilterSubscription category="3" isActive={filterSubscriptionNumber === 3} click={(e) => {
                                                 let evt = e.currentTarget as HTMLInputElement;
-                                                setFilterSubscriptionName(evt.getAttribute("category") || "Any")
-                                                setFilterSubscriptionNumber(3)
+                                                setFilterSubscriptionName(evt.getAttribute("category") || "Any");
+                                                setFilterSubscriptionNumber(3);
                                             }} />
                                             <FilterSubscription category="7" isActive={filterSubscriptionNumber === 4} click={(e) => {
                                                 let evt = e.currentTarget as HTMLInputElement;
-                                                setFilterSubscriptionName(evt.getAttribute("category") || "Any")
-                                                setFilterSubscriptionNumber(4)
+                                                setFilterSubscriptionName(evt.getAttribute("category") || "Any");
+                                                setFilterSubscriptionNumber(4);
                                             }} />
                                             <FilterSubscription category="30" isActive={filterSubscriptionNumber === 5} click={(e) => {
                                                 let evt = e.currentTarget as HTMLInputElement;
-                                                setFilterSubscriptionName(evt.getAttribute("category") || "Any")
-                                                setFilterSubscriptionNumber(5)
+                                                setFilterSubscriptionName(evt.getAttribute("category") || "Any");
+                                                setFilterSubscriptionNumber(5);
                                             }} />
                                             <FilterSubscription category="Lifetime" isActive={filterSubscriptionNumber === 6} click={(e) => {
                                                 let evt = e.currentTarget as HTMLInputElement;
-                                                setFilterSubscriptionName(evt.getAttribute("category") || "Any")
-                                                setFilterSubscriptionNumber(6)
+                                                setFilterSubscriptionName(evt.getAttribute("category") || "Any");
+                                                setFilterSubscriptionNumber(6);
                                             }} />
                                         </motion.div>
                                     }
@@ -567,8 +442,8 @@ export default function Products() {
                             <div className="filter_subscription">
                                 <span className="filter_title">Minimum Rating:</span>
                                 <div className={`filter_subscription_button ${filterRatingDropdownActive ? " active" : ""}`} onClick={() => {
-                                        setFilterRatingDropdownActive((filterRatingDropdownActive) => !filterRatingDropdownActive)
-                                        setApplyRating(false)
+                                        setFilterRatingDropdownActive((filterRatingDropdownActive) => !filterRatingDropdownActive);
+                                        setApplyRating(false);
                                     }}>
                                     {
                                         filterRatingCategoryCheck()
@@ -587,33 +462,33 @@ export default function Products() {
                                         >
                                             <FilterRating category="Any" isActive={filterRatingNumber=== 1} click={(e) => {
                                                 let evt = e.currentTarget as HTMLInputElement;
-                                                setFilterRatingName(evt.getAttribute("category") || "Any")
-                                                setFilterRatingNumber(1)
+                                                setFilterRatingName(evt.getAttribute("category") || "Any");
+                                                setFilterRatingNumber(1);
                                             }} />
                                             <FilterRating category="1" isActive={filterRatingNumber === 2} click={(e) => {
                                                 let evt = e.currentTarget as HTMLInputElement;
-                                                setFilterRatingName(evt.getAttribute("category") || "Any")
-                                                setFilterRatingNumber(2)
+                                                setFilterRatingName(evt.getAttribute("category") || "Any");
+                                                setFilterRatingNumber(2);
                                             }} />
                                             <FilterRating category="2" isActive={filterRatingNumber === 3} click={(e) => {
                                                 let evt = e.currentTarget as HTMLInputElement;
-                                                setFilterRatingName(evt.getAttribute("category") || "Any")
-                                                setFilterRatingNumber(3)
+                                                setFilterRatingName(evt.getAttribute("category") || "Any");
+                                                setFilterRatingNumber(3);
                                             }} />
                                             <FilterRating category="3" isActive={filterRatingNumber === 4} click={(e) => {
                                                 let evt = e.currentTarget as HTMLInputElement;
-                                                setFilterRatingName(evt.getAttribute("category") || "Any")
-                                                setFilterRatingNumber(4)
+                                                setFilterRatingName(evt.getAttribute("category") || "Any");
+                                                setFilterRatingNumber(4);
                                             }} />
                                             <FilterRating category="4" isActive={filterRatingNumber === 5} click={(e) => {
                                                 let evt = e.currentTarget as HTMLInputElement;
-                                                setFilterRatingName(evt.getAttribute("category") || "Any")
-                                                setFilterRatingNumber(5)
+                                                setFilterRatingName(evt.getAttribute("category") || "Any");
+                                                setFilterRatingNumber(5);
                                             }} />
                                             <FilterRating category="5" isActive={filterRatingNumber === 6} click={(e) => {
                                                 let evt = e.currentTarget as HTMLInputElement;
-                                                setFilterRatingName(evt.getAttribute("category") || "Any")
-                                                setFilterRatingNumber(6)
+                                                setFilterRatingName(evt.getAttribute("category") || "Any");
+                                                setFilterRatingNumber(6);
                                             }} />
                                         </motion.div>
                                     }
@@ -629,12 +504,12 @@ export default function Products() {
                                         maxLength={4}
                                         onChange={(e) => {
                                             let text = (e.target.value).replaceAll(/[^0-9]/g, "");
-                                            setBansPerMonth(text)
-                                            setApplyBpm(false)
+                                            setBansPerMonth(text);
+                                            setApplyBpm(false);
                                         }}
                                         onBlur={(e) => {
                                             let text = (e.target.value).replaceAll(/[^0-9]/g, "");
-                                            setBansPerMonth(text)
+                                            setBansPerMonth(text);
                                         }}
                                     />
                             </div>
@@ -644,9 +519,9 @@ export default function Products() {
                                 if(filterSubscriptionName !== "Any") setApplySubscription(true);
                                 if(filterRatingName !== "Any") setApplyRating(true);
                                 if(bansPerMonth !== "") setApplyBpm(true);
-                                setShowToggle((showToggle) => !showToggle)
-                                setFilterSubscriptionDropdownActive(false)
-                                setFilterRatingDropdownActive(false)
+                                setShowToggle((showToggle) => !showToggle);
+                                setFilterSubscriptionDropdownActive(false);
+                                setFilterRatingDropdownActive(false);
                             }}>
                                 Apply
                             </div>
@@ -707,10 +582,9 @@ export default function Products() {
                     
                     <AnimatePresence initial={false}>
                         {
-                            newArray?.length 
-                            ? 
+                            newArray?.length ? 
                                 newArray?.map((e,i) => <ProductCard id={i+""} array={newArray || JsonProducts} key={"ProductCard" + i} />) 
-                            : 
+                                : 
                                 <motion.span 
                                     className="product_not_found"
                                     initial={{opacity: 0}}
