@@ -13,6 +13,7 @@ export default function ProductImages({array, imageOpened}: imagesArray) {
 
     let imagesRef = React.useRef(null);
     let [imagesModalOpen, setImagesModalOpen] = React.useState(false);
+    let [clickable, setClickable] = React.useState(true);
     let [imageIndex, setImageIndex] = React.useState("");
     
     function backdropClose() {
@@ -43,6 +44,9 @@ export default function ProductImages({array, imageOpened}: imagesArray) {
                     className="product_card_images_wrapper_container"
                     dragConstraints={imagesRef}
                     whileDrag={{cursor: "grabbing"}}
+                    onDragStart={() => setClickable(false)}
+                    onDragEnd={() => setClickable(false)}
+                    onMouseUp={() => setClickable(true)}
                     drag="x"
                 >
                     {
@@ -52,11 +56,12 @@ export default function ProductImages({array, imageOpened}: imagesArray) {
                             image_index={"image_index" + i}
                             onClick={(e) => {
                                 let evt = e.currentTarget as HTMLInputElement
-                                imageOpened()
-                                setImagesModalOpen(true);
-                                document.body.setAttribute("overflow", "hidden")
-                                setImageIndex((evt.getAttribute("image_index") || "image_index").replaceAll("image_index", ""))
-                            }}
+                                if(clickable === true){
+                                    imageOpened()
+                                    setImagesModalOpen(true);
+                                    document.body.setAttribute("overflow", "hidden")
+                                    setImageIndex((evt.getAttribute("image_index") || "image_index").replaceAll("image_index", ""))
+                                }}}
                         >
                             <img
                                 src={e} 
