@@ -166,7 +166,7 @@ export default function Products() {
 
     return(
         <div className="products box">
-            <div className="container">
+            <div className="container" id="products">
                 <div className="products_title">
                     <h1 className="products_title_text">
                         <span className="gradient">Explore</span>

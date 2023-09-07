@@ -13,13 +13,14 @@ export default function Hero_new() {
                     Escrow based marketplace ✨
                 </div>
                 <div className="hero_title">
-                    Cheating Store - Buy directly<br/>from manufacturers.
+                    Cheating Store - Buy directly<br/> from manufacturers.
                 </div>
                 <div className="hero_subhead">
-                    <span>Meet a new level of accessibility and trust.</span>
-                    <span>Buy cheats the way you like.</span>
+                    <span>
+                        Meet a new level of accessibility and trust.<br/> Buy cheats the way you like.
+                    </span>
                 </div>
-                <a href="#" className="hero_button">
+                <a href="#products" className="hero_button">
                     View Products
                     <img src={arrow} alt="" />
                 </a>

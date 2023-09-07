@@ -9,7 +9,7 @@ export default function Navbar() {
         <div className="navbar box">
             <div className="container">
                 <Link to="/"><img src={logo} alt="" /></Link>
-                <ul className="navbar_ul">
+                {/* <ul className="navbar_ul">
                     <Link to="/">
                         <li>Marketplace</li>
                         <li>Marketplace</li>
@@ -26,7 +26,7 @@ export default function Navbar() {
                         <li>FAQ</li>
                         <li>FAQ</li>
                     </Link>
-                </ul>
+                </ul> */}
                 <div className="authorization">
                     <Link to="/"><div className="login">Sign in</div></Link>
                 </div>

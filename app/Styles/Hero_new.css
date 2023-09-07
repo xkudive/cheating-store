@@ -151,5 +151,33 @@
     opacity: 0.7;
   }
 }
+@media screen and (max-width: 800px) {
+  .hero_title {
+    font-size: 44px;
+  }
+  .hero_title br {
+    display: none;
+  }
+  .hero_subhead {
+    font-size: 18px;
+    display: flex;
+  }
+}
+@media screen and (max-width: 800px) {
+  .hero_subhead br {
+    display: none;
+  }
+}
+@media screen and (max-width: 640px) {
+  .hero {
+    padding-top: 48px;
+    margin-bottom: 32px;
+  }
+}
+@media screen and (max-width: 420px) {
+  .hero_title {
+    font-size: 38px;
+  }
+}
 
 /*# sourceMappingURL=Hero_new.css.map */
