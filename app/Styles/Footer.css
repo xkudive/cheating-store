@@ -1,0 +1,143 @@
+.footer {
+  margin-top: 48px;
+  padding: 32px 0 24px 0;
+  border-top: 1px solid rgba(160, 184, 255, 0.1);
+  background: rgba(3, 58, 81, 0.2);
+}
+.footer .container {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer_top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer_left {
+  display: flex;
+  flex-direction: column;
+  width: 284px;
+  gap: 24px;
+}
+.footer_left p {
+  color: rgba(160, 160, 160, 0.8);
+  padding-left: 4px;
+}
+
+.footer_logo {
+  display: flex;
+  width: 120px;
+  align-items: center;
+  transition: 0.3s ease;
+  transform-origin: center;
+}
+.footer_logo:hover {
+  scale: 1.05;
+}
+.footer_logo img:first-child {
+  width: 64px;
+  height: 64px;
+}
+.footer_logo img:last-child {
+  height: 32px;
+}
+
+.footer_bottom {
+  position: relative;
+  margin-top: 32px;
+  padding-top: 24px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 14px;
+}
+.footer_bottom:before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.06) 20%, rgba(255, 255, 255, 0.06) 80%, transparent);
+}
+
+.footer_right {
+  display: flex;
+}
+.footer_right ul {
+  display: flex;
+  flex-direction: row;
+  font-size: 16px;
+  font-weight: 600;
+  gap: 16px;
+}
+.footer_right ul a {
+  color: rgba(255, 255, 255, 0.6);
+  transition: 0.4s ease;
+}
+.footer_right ul a:hover {
+  color: #fff;
+}
+
+.footer_right_title {
+  display: none;
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 18px;
+  color: #fff;
+}
+
+@media screen and (max-width: 800px) {
+  .footer_top {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer_right {
+    margin-top: 16px;
+  }
+  .footer_bottom {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+}
+@media screen and (max-width: 500px) {
+  .footer_logo {
+    transform: translateX(-8px);
+    gap: 4px;
+  }
+  .footer_logo img:first-child {
+    width: 48px;
+    height: 48px;
+  }
+  .footer_logo img:last-child {
+    height: 24px;
+  }
+  .footer_top {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .footer_right_title {
+    display: block;
+  }
+  .footer_right {
+    margin-top: 32px;
+  }
+  .footer_right ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .footer_bottom {
+    text-align: left;
+  }
+}
+
+/*# sourceMappingURL=Footer.css.map */

@@ -9,8 +9,9 @@ export const meta: V2_MetaFunction = () => {
 };
 
 import Navbar from "../Components/Navbar";
-import Hero_new from "../Components/Hero_new";
-import Products from "~/Components/Products";
+import Hero_new from "../Components/Hero";
+import Products from "../Components/Products";
+import Footer from "~/Components/Footer";
 
 
 export default function Index() {
@@ -20,6 +21,7 @@ export default function Index() {
             <Navbar />
             <Hero_new />
             <Products />
+            <Footer />
         </>
     );
 }

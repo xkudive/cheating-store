@@ -90,7 +90,7 @@ export default function Navbar() {
             <AnimatePresence initial={false}>
                     {burgerOpen &&
                         <motion.div className="mobile_navbar"
-                            initial={{clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)", transition: {duration: 0.8, ease: [0.27,0.94,0.48,1.00]} }}
+                            initial={{clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)"}}
                             animate={{clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)", transition: {duration: 0.8, ease: [0.27,0.94,0.48,1.00]} }}
                             exit={{clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)", transition: {duration: 0.8, delay: 0.5, ease: [0.27,0.94,0.48,1.00]} }}
                         >
