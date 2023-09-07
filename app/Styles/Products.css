@@ -814,5 +814,22 @@
     text-align: center;
   }
 }
+@media screen and (max-width: 860px) {
+  .gallery-button {
+    width: 36px;
+  }
+}
+@media screen and (max-width: 590px) {
+  .gallery_button {
+    display: flex;
+    width: 32px;
+    position: absolute;
+    top: calc(100% - 32px - 32px);
+    translate: 0 0;
+    cursor: pointer;
+    user-select: none;
+    z-index: 1;
+  }
+}
 
 /*# sourceMappingURL=Products.css.map */

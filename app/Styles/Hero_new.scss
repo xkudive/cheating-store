@@ -58,6 +58,11 @@
     padding: 12px 24px;
     border-radius: 16px;
     background: linear-gradient(to right, #385bb3, rgb(95, 187, 207));
+    transition: 0.3s ease;
+
+    &:active{
+        scale: 0.95;
+    }
 
     img{
         rotate: -90deg;
