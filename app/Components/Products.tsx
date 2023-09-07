@@ -124,7 +124,7 @@ export default function Products() {
 
         if (applyPrice !== false) {
             let filter = filtered?.filter((e) => {
-                return (e.prices.map((elem) => parseInt(elem))[0] >= parseInt(priceFrom) && e.prices.map((elem) => parseInt(elem))[0] <= parseInt(priceTo)) || (e.prices.map((elem) => parseInt(elem))[e.prices.length-1] >= parseInt(priceFrom) && e.prices.map((elem) => parseInt(elem))[e.prices.length-1] <= parseInt(priceTo));
+                return (e.prices.map((elem) => parseInt(elem))[0] <= parseInt(priceFrom) || e.prices.map((elem) => parseInt(elem))[0] <= parseInt(priceTo)) && (e.prices.map((elem) => parseInt(elem))[e.prices.length-1] >= parseInt(priceFrom) || e.prices.map((elem) => parseInt(elem))[e.prices.length-1] >= parseInt(priceTo));
             })
             filtered = [...filter]
         }
@@ -584,9 +584,7 @@ export default function Products() {
                         }} />
 
                 </div>
-                <div className="products_section">
-                    <div className="box-gradient"></div>
-                    
+                <div className="products_section">                    
                     <AnimatePresence initial={false}>
                         {
                             newArray?.length ? 

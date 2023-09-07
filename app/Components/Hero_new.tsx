@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "@remix-run/react";
 
 import arrow from "../images/arrow_link.svg"
 
@@ -20,10 +21,10 @@ export default function Hero_new() {
                         Meet a new level of accessibility and trust.<br/> Buy cheats the way you like.
                     </span>
                 </div>
-                <a href="#products" className="hero_button">
+                <Link to="#products" className="hero_button">
                     View Products
                     <img src={arrow} alt="" />
-                </a>
+                </Link>
             </div>
         </div>
     )

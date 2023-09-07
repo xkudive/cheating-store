@@ -1,25 +1,32 @@
 .navbar {
   z-index: 1000;
   position: relative;
-  opacity: 0;
-  animation: navbarReveal 0.4s 0.8s cubic-bezier(0.23, 0.6, 0.64, 1) forwards;
 }
 .navbar .container {
+  position: relative;
   display: flex;
   align-items: center;
   padding: 12px 32px;
   justify-content: space-between;
+  opacity: 0;
+  animation: navbarReveal 0.4s cubic-bezier(0.23, 0.6, 0.64, 1) forwards;
 }
 .navbar .container > a {
   display: flex;
 }
-.navbar .container img {
+
+.navbar_logo {
   width: 64px;
   height: 64px;
+  transform: translateX(-12px);
   transition: 0.3s cubic-bezier(0.23, 0.6, 0.64, 1);
 }
-.navbar .container img:hover {
+.navbar_logo:hover {
   scale: 1.15;
+}
+.navbar_logo img {
+  width: 100%;
+  height: 100%;
 }
 
 @keyframes navbarReveal {
@@ -119,6 +126,106 @@
   opacity: 0;
   z-index: -1;
   transition: 0.4s cubic-bezier(0.23, 0.6, 0.64, 1);
+}
+
+.nav_mobile {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.mobile_navbar {
+  padding: 0 32px;
+  top: 0;
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  z-index: 9999;
+  width: 100%;
+  height: 100svh;
+  left: 0;
+  background: rgba(12, 44, 86, 0.6);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.mobile_navbar_top_menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 12px 0;
+}
+.mobile_navbar_top_menu a {
+  text-decoration: none;
+}
+
+.mobile_navbar_close {
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+}
+
+.mobile_navbar_ul {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  align-items: flex-start;
+  margin-top: 64px;
+}
+.mobile_navbar_ul li {
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.burger_btn {
+  position: relative;
+  display: none;
+  flex-direction: column;
+  min-width: 32px;
+  height: 32px;
+  justify-content: center;
+  align-items: flex-end;
+  cursor: pointer;
+}
+.burger_btn span {
+  position: absolute;
+  border-radius: 8px;
+  width: 32px;
+  height: 3px;
+  background: #fff;
+  transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  transform-origin: center;
+}
+.burger_btn span:nth-child(1) {
+  transform: translateY(-8px);
+  width: 50%;
+  transform-origin: top;
+}
+.burger_btn span:nth-child(3) {
+  transform: translateY(8px);
+  width: 75%;
+  transform-origin: bottom;
+}
+.burger_btn.non-clickable {
+  pointer-events: none;
+}
+
+@media screen and (max-width: 800px) {
+  .navbar_ul {
+    display: none;
+  }
+  .burger_btn {
+    display: flex;
+  }
+  .mobile_navbar {
+    display: flex;
+  }
+}
+@media screen and (max-width: 640px) {
+  .login {
+    padding: 8px 16px;
+  }
 }
 
 /*# sourceMappingURL=Navbar.css.map */

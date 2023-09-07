@@ -28,6 +28,8 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-image: linear-gradient(80deg, #f8f6f2, #f8f6f2, rgb(133, 135, 153));
+  opacity: 0;
+  animation: textReveal 0.4s 0.4s forwards;
 }
 
 .hero_suphead {
@@ -38,6 +40,8 @@
   background: rgba(80, 80, 80, 0.4);
   border: 1px solid rgba(120, 120, 120, 0.4);
   box-shadow: 0 12px 12px rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  animation: textReveal 0.4s 0.2s forwards;
 }
 
 .hero_subhead {
@@ -48,6 +52,8 @@
   font-size: 20px;
   color: rgb(180, 189, 208);
   line-height: 150%;
+  opacity: 0;
+  animation: textReveal 0.4s 0.6s forwards;
 }
 
 .hero_button {
@@ -59,6 +65,8 @@
   border-radius: 16px;
   background: linear-gradient(to right, #385bb3, rgb(95, 187, 207));
   transition: 0.3s ease;
+  opacity: 0;
+  animation: fadeIn 0.4s 0.8s ease forwards;
 }
 .hero_button:active {
   scale: 0.95;
@@ -124,7 +132,7 @@
 @keyframes textReveal {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(-30px);
   }
   to {
     opacity: 1;
@@ -167,12 +175,12 @@
     display: flex;
   }
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 640px) {
   .hero_subhead br {
     display: none;
   }
 }
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 540px) {
   .hero {
     padding-top: 48px;
     margin-bottom: 32px;
@@ -181,6 +189,11 @@
 @media screen and (max-width: 420px) {
   .hero_title {
     font-size: 38px;
+  }
+}
+@media screen and (max-width: 374px) {
+  .hero_title {
+    font-size: 32px;
   }
 }
 
