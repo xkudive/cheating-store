@@ -9,7 +9,8 @@ import FilterRating from "./Products/FilterRating"
 
 declare module 'react' {
     interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
-      category?: string;
+        image_index?: string;
+        category?: string;
     }
 }
 
@@ -25,6 +26,12 @@ interface ProductArray{
     prices: (string)[];
     description: string;
     features: (string)[];
+    cheat_images: (string)[];
+}
+
+interface Id{
+    id: string;
+    array: ProductArray[];
 }
 
 export default function Products() {

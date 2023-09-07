@@ -27,12 +27,14 @@ interface Id{
 export default function ProductCard({id, array}: Id){
 
     let featuresRef = React.useRef(null);
+    let [imageOpened, setImageOpened] = React.useState(false)
 
     return(
         <motion.div className="product_card"
             initial={{opacity: 0}}
             animate={{opacity: 1}}
             exit={{opacity: 0}}
+            style={{zIndex: `${imageOpened ? 1000 : 0}`}}
         >
             <div className="product_card_info">
                 <div className="product_card_text">
@@ -102,7 +104,7 @@ export default function ProductCard({id, array}: Id){
                     </motion.div>
                 </div>
                 <div className="product_card_cheat_images">
-                    <ProductImages array={array[parseInt(id)].cheat_images}/>
+                    <ProductImages array={array[parseInt(id)].cheat_images} imageOpened={() => setImageOpened(imageOpened => !imageOpened)}/>
                 </div>
                 <div className="product_card_cheat_description">
                     {array[parseInt(id)].description}

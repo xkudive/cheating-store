@@ -49,7 +49,7 @@ export default function App() {
         <Links />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/smoothscroll/1.4.10/SmoothScroll.min.js" integrity="sha256-huW7yWl7tNfP7lGk46XE+Sp0nCotjzYodhVKlwaNeco=" crossOrigin="anonymous" defer></script>
       </head>
-      <body className="preload" overflow="hidden">
+      <body>
         <div id="root">
           <Outlet />
         </div>
