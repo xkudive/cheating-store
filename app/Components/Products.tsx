@@ -163,6 +163,25 @@ export default function Products() {
         getProducts();
     }, [applyBpm])
 
+    function filterSubscriptionClick(number: number, e: React.MouseEvent<Element, MouseEvent>) {
+        let evt = e.currentTarget as HTMLInputElement;
+        setFilterSubscriptionName(evt.getAttribute("category") || "Any");
+        setFilterSubscriptionNumber(number);
+        setFilterSubscriptionDropdownActive(false)
+    }
+
+    function filterRatingClick(number: number, e: React.MouseEvent<Element, MouseEvent>) {
+        let evt = e.currentTarget as HTMLInputElement;
+        setFilterRatingName(evt.getAttribute("category") || "Any");
+        setFilterRatingNumber(number);
+        setFilterRatingDropdownActive(false)
+    }
+
+    function filterCategoryNumberClick(number: number, e: React.MouseEvent<Element, MouseEvent>) {
+        let evt = e.currentTarget as HTMLInputElement
+        setCategoryName(evt.getAttribute("category") || "All")
+        setCategoryNumber(number)
+    }
 
     return(
         <div className="products box">
@@ -412,36 +431,12 @@ export default function Products() {
                                             animate={{opacity: 1}}
                                             exit={{opacity: 0}}
                                         >
-                                            <FilterSubscription category="Any" isActive={filterSubscriptionNumber=== 1} click={(e) => {
-                                                let evt = e.currentTarget as HTMLInputElement;
-                                                setFilterSubscriptionName(evt.getAttribute("category") || "Any");
-                                                setFilterSubscriptionNumber(1);
-                                            }} />
-                                            <FilterSubscription category="1" isActive={filterSubscriptionNumber === 2} click={(e) => {
-                                                let evt = e.currentTarget as HTMLInputElement;
-                                                setFilterSubscriptionName(evt.getAttribute("category") || "Any");
-                                                setFilterSubscriptionNumber(2);
-                                            }} />
-                                            <FilterSubscription category="3" isActive={filterSubscriptionNumber === 3} click={(e) => {
-                                                let evt = e.currentTarget as HTMLInputElement;
-                                                setFilterSubscriptionName(evt.getAttribute("category") || "Any");
-                                                setFilterSubscriptionNumber(3);
-                                            }} />
-                                            <FilterSubscription category="7" isActive={filterSubscriptionNumber === 4} click={(e) => {
-                                                let evt = e.currentTarget as HTMLInputElement;
-                                                setFilterSubscriptionName(evt.getAttribute("category") || "Any");
-                                                setFilterSubscriptionNumber(4);
-                                            }} />
-                                            <FilterSubscription category="30" isActive={filterSubscriptionNumber === 5} click={(e) => {
-                                                let evt = e.currentTarget as HTMLInputElement;
-                                                setFilterSubscriptionName(evt.getAttribute("category") || "Any");
-                                                setFilterSubscriptionNumber(5);
-                                            }} />
-                                            <FilterSubscription category="Lifetime" isActive={filterSubscriptionNumber === 6} click={(e) => {
-                                                let evt = e.currentTarget as HTMLInputElement;
-                                                setFilterSubscriptionName(evt.getAttribute("category") || "Any");
-                                                setFilterSubscriptionNumber(6);
-                                            }} />
+                                            <FilterSubscription category="Any" isActive={filterSubscriptionNumber=== 1} click={(e) => filterSubscriptionClick(1, e)} />
+                                            <FilterSubscription category="1" isActive={filterSubscriptionNumber === 2} click={(e) => filterSubscriptionClick(2, e)} />
+                                            <FilterSubscription category="3" isActive={filterSubscriptionNumber === 3} click={(e) => filterSubscriptionClick(3, e)} />
+                                            <FilterSubscription category="7" isActive={filterSubscriptionNumber === 4} click={(e) => filterSubscriptionClick(4, e)} />
+                                            <FilterSubscription category="30" isActive={filterSubscriptionNumber === 5} click={(e) => filterSubscriptionClick(5, e)} />
+                                            <FilterSubscription category="Lifetime" isActive={filterSubscriptionNumber === 6} click={(e) => filterSubscriptionClick(6, e)} />
                                         </motion.div>
                                     }
                                 </AnimatePresence>
@@ -467,36 +462,12 @@ export default function Products() {
                                             animate={{opacity: 1}}
                                             exit={{opacity: 0}}
                                         >
-                                            <FilterRating category="Any" isActive={filterRatingNumber=== 1} click={(e) => {
-                                                let evt = e.currentTarget as HTMLInputElement;
-                                                setFilterRatingName(evt.getAttribute("category") || "Any");
-                                                setFilterRatingNumber(1);
-                                            }} />
-                                            <FilterRating category="1" isActive={filterRatingNumber === 2} click={(e) => {
-                                                let evt = e.currentTarget as HTMLInputElement;
-                                                setFilterRatingName(evt.getAttribute("category") || "Any");
-                                                setFilterRatingNumber(2);
-                                            }} />
-                                            <FilterRating category="2" isActive={filterRatingNumber === 3} click={(e) => {
-                                                let evt = e.currentTarget as HTMLInputElement;
-                                                setFilterRatingName(evt.getAttribute("category") || "Any");
-                                                setFilterRatingNumber(3);
-                                            }} />
-                                            <FilterRating category="3" isActive={filterRatingNumber === 4} click={(e) => {
-                                                let evt = e.currentTarget as HTMLInputElement;
-                                                setFilterRatingName(evt.getAttribute("category") || "Any");
-                                                setFilterRatingNumber(4);
-                                            }} />
-                                            <FilterRating category="4" isActive={filterRatingNumber === 5} click={(e) => {
-                                                let evt = e.currentTarget as HTMLInputElement;
-                                                setFilterRatingName(evt.getAttribute("category") || "Any");
-                                                setFilterRatingNumber(5);
-                                            }} />
-                                            <FilterRating category="5" isActive={filterRatingNumber === 6} click={(e) => {
-                                                let evt = e.currentTarget as HTMLInputElement;
-                                                setFilterRatingName(evt.getAttribute("category") || "Any");
-                                                setFilterRatingNumber(6);
-                                            }} />
+                                            <FilterRating category="Any" isActive={filterRatingNumber=== 1} click={(e) => filterRatingClick(1, e)} />
+                                            <FilterRating category="1" isActive={filterRatingNumber === 2} click={(e) => filterRatingClick(2, e)} />
+                                            <FilterRating category="2" isActive={filterRatingNumber === 3} click={(e) => filterRatingClick(3, e)} />
+                                            <FilterRating category="3" isActive={filterRatingNumber === 4} click={(e) => filterRatingClick(4, e)} />
+                                            <FilterRating category="4" isActive={filterRatingNumber === 5} click={(e) => filterRatingClick(5, e)} />
+                                            <FilterRating category="5" isActive={filterRatingNumber === 6} click={(e) => filterRatingClick(6, e)} />
                                         </motion.div>
                                     }
                                 </AnimatePresence>
@@ -537,51 +508,15 @@ export default function Products() {
                 </div>
                 <div className="products_category">
                         
-                        <ActiveCategory category="All" isActive={categoryNumber === 1} click={(e) => {
-                            let evt = e.currentTarget as HTMLInputElement
-                            setCategoryName(evt.getAttribute("category") || "All")
-                            setCategoryNumber(1)
-                        }} />
-                        <ActiveCategory category="Rust" isActive={categoryNumber === 2} click={(e) => {
-                            let evt = e.currentTarget as HTMLInputElement
-                            setCategoryName(evt.getAttribute("category") || "All")
-                            setCategoryNumber(2)
-                        }} />
-                        <ActiveCategory category="Valorant" isActive={categoryNumber === 3} click={(e) => {
-                            let evt = e.currentTarget as HTMLInputElement
-                            setCategoryName(evt.getAttribute("category") || "All")
-                            setCategoryNumber(3)
-                        }} />
-                        <ActiveCategory category="Escape from Tarkov" isActive={categoryNumber === 4} click={(e) => {
-                            let evt = e.currentTarget as HTMLInputElement
-                            setCategoryName(evt.getAttribute("category") || "All")
-                            setCategoryNumber(4)
-                        }} />
-                        <ActiveCategory category="Apex Legends" isActive={categoryNumber === 5} click={(e) => {
-                            let evt = e.currentTarget as HTMLInputElement
-                            setCategoryName(evt.getAttribute("category") || "All")
-                            setCategoryNumber(5)
-                        }} />
-                        <ActiveCategory category="Fortnite" isActive={categoryNumber === 6} click={(e) => {
-                            let evt = e.currentTarget as HTMLInputElement
-                            setCategoryName(evt.getAttribute("category") || "All")
-                            setCategoryNumber(6)
-                        }} />
-                        <ActiveCategory category="CoD MW2" isActive={categoryNumber === 7} click={(e) => {
-                            let evt = e.currentTarget as HTMLInputElement
-                            setCategoryName(evt.getAttribute("category") || "All")
-                            setCategoryNumber(7)
-                        }} />
-                        <ActiveCategory category="Rainbow Six" isActive={categoryNumber === 8} click={(e) => {
-                            let evt = e.currentTarget as HTMLInputElement
-                            setCategoryName(evt.getAttribute("category") || "All")
-                            setCategoryNumber(8)
-                        }} />
-                        <ActiveCategory category="Spoofer" isActive={categoryNumber === 9} click={(e) => {
-                            let evt = e.currentTarget as HTMLInputElement
-                            setCategoryName(evt.getAttribute("category") || "All")
-                            setCategoryNumber(9)
-                        }} />
+                        <ActiveCategory category="All" isActive={categoryNumber === 1} click={(e) => filterCategoryNumberClick(1, e)} />
+                        <ActiveCategory category="Rust" isActive={categoryNumber === 2} click={(e) => filterCategoryNumberClick(2, e)} />
+                        <ActiveCategory category="Valorant" isActive={categoryNumber === 3} click={(e) => filterCategoryNumberClick(3, e)} />
+                        <ActiveCategory category="Escape from Tarkov" isActive={categoryNumber === 4} click={(e) => filterCategoryNumberClick(4, e)} />
+                        <ActiveCategory category="Apex Legends" isActive={categoryNumber === 5} click={(e) => filterCategoryNumberClick(5, e)} />
+                        <ActiveCategory category="Fortnite" isActive={categoryNumber === 6} click={(e) => filterCategoryNumberClick(6, e)} />
+                        <ActiveCategory category="CoD MW2" isActive={categoryNumber === 7} click={(e) => filterCategoryNumberClick(7, e)} />
+                        <ActiveCategory category="Rainbow Six" isActive={categoryNumber === 8} click={(e) => filterCategoryNumberClick(8, e)} />
+                        <ActiveCategory category="Spoofer" isActive={categoryNumber === 9} click={(e) => filterCategoryNumberClick(9, e)} />
 
                 </div>
                 <div className="products_section">                    

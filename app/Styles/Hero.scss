@@ -85,55 +85,6 @@
     }
 }
 
-.circle_rotate_container{
-    position: absolute;
-    display: flex;
-    right: -100px;
-    top: 43%;
-    opacity: 0;
-    justify-content: center;
-    animation: fadeIn 0.8s 3.0s cubic-bezier(0.23,0.6,0.64,1) forwards;
-
-    img{
-        pointer-events: none;
-        position: absolute;
-	    user-select: none;
-        display: flex;
-        width: 64px;
-        align-self: center;
-    }
-}
-
-.circle_rotate{
-    display: flex;
-    width: 150px;
-    height: 150px;
-    justify-content: center;
-    text-transform: uppercase;
-    animation: circleRotate 10s linear infinite;
-
-    &>span{
-        position: absolute;
-        transform-origin: 0 75px;
-        left: 50%;
-        font-size: 16px;
-        font-weight: 700;
-
-        span{
-            display: block;
-            transform: rotate(4deg);
-        }
-    }
-}
-
-@keyframes circleRotate {
-    from{
-        rotate: 0deg;
-    } to{
-        rotate: 360deg;
-    }
-}
-
 @keyframes textReveal {
     from{
         opacity: 0;

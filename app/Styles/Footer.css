@@ -3,6 +3,8 @@
   padding: 32px 0 24px 0;
   border-top: 1px solid rgba(160, 184, 255, 0.1);
   background: rgba(3, 58, 81, 0.2);
+  opacity: 0;
+  animation: fadeIn 0.4s 1.6s ease forwards;
 }
 .footer .container {
   display: flex;
@@ -71,7 +73,6 @@
   display: flex;
   flex-direction: row;
   font-size: 16px;
-  font-weight: 600;
   gap: 16px;
 }
 .footer_right ul a {
