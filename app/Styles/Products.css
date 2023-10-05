@@ -207,6 +207,10 @@
   color: #898989;
 }
 
+.product_dot {
+  display: flex;
+  align-items: center;
+}
 .product_dot svg {
   width: 6px;
   display: flex;

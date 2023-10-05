@@ -15,6 +15,9 @@ import styles1 from "./Styles/Hero.css";
 import styles2 from "./Styles/Navbar.css";
 import styles3 from "./Styles/Products.css";
 import styles4 from "./Styles/Footer.css";
+import styles5 from "./Styles/PriceBox.css";
+import styles6 from "./Styles/Profile.css";
+import styles7 from "./Styles/Pricing.css";
 
 import logo from "./images/logo_small.webp";
 
@@ -25,6 +28,9 @@ export const links: LinksFunction = () => {
     {rel: 'stylesheet', href: styles2 },
     {rel: 'stylesheet', href: styles3 },
     {rel: 'stylesheet', href: styles4 },
+    {rel: 'stylesheet', href: styles5 },
+    {rel: 'stylesheet', href: styles6 },
+    {rel: 'stylesheet', href: styles7 },
     {
       rel: "icon",
       href: logo,

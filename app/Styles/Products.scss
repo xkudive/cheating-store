@@ -227,6 +227,8 @@
 }
 
 .product_dot{
+    display: flex;
+    align-items: center;
     svg{
         width: 6px;
         display: flex;

@@ -57,6 +57,7 @@
 }
 
 .hero_button {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 8px;

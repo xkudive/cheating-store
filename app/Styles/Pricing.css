@@ -1,0 +1,156 @@
+.hero.pricing .background_shadow {
+  background: radial-gradient(90% 100% at 50% 0%, rgba(56, 179, 167, 0.4), rgba(255, 255, 255, 0));
+}
+
+.pricing_plans {
+  margin-top: 64px;
+  opacity: 0;
+  animation: fadeIn 0.4s 0.8s forwards;
+}
+.pricing_plans .container {
+  justify-content: center;
+}
+
+.pricing_card_box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.pricing_card {
+  width: 100%;
+  max-width: 384px;
+  border-radius: 16px;
+  background: rgba(59, 178, 184, 0.2);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(8px);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: 0.4s ease;
+  scale: 0.9;
+}
+.pricing_card:hover {
+  scale: 0.93;
+}
+.pricing_card:nth-child(2) {
+  scale: 1;
+  background: linear-gradient(200deg, rgba(15, 107, 255, 0.4), rgba(86, 117, 255, 0.4), rgba(111, 177, 252, 0.4));
+}
+.pricing_card:nth-child(2):hover {
+  scale: 1.03;
+}
+
+.plan_type_box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.plan_type {
+  border-radius: 8px;
+  padding: 4px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 14px;
+}
+
+.plan_popular {
+  border-radius: 8px;
+  padding: 4px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 14px;
+}
+
+.plan_price {
+  margin: 16px 0;
+  font-weight: 600;
+}
+
+.plan_price_cost {
+  font-size: 36px;
+}
+
+.plan_price_duration {
+  font-size: 24px;
+  color: #d1d1d1;
+}
+
+.plan_features {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 48px 0;
+  gap: 12px;
+  position: relative;
+}
+.plan_features:before {
+  content: "";
+  position: absolute;
+  top: -24px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+}
+.plan_features:after {
+  content: "";
+  position: absolute;
+  bottom: -24px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.plan_subhead {
+  color: #fff;
+}
+
+.plan_info {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+  font-size: 18px;
+}
+.plan_info svg {
+  width: 24px;
+}
+.plan_info svg path {
+  stroke: rgb(68, 177, 216);
+}
+
+.plan_button {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 12px 0;
+  border-radius: 12px;
+  background: rgba(68, 216, 202, 0.3);
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.4s ease;
+}
+.plan_button:hover {
+  background: rgba(56, 179, 167, 0.6);
+}
+
+@media screen and (max-width: 1200px) {
+  .pricing_card_box {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  .pricing_card {
+    scale: 1;
+  }
+  .pricing_card:hover {
+    scale: 1.03;
+  }
+}
+
+/*# sourceMappingURL=Pricing.css.map */

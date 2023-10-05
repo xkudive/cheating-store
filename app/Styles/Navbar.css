@@ -178,6 +178,23 @@
   font-weight: 500;
 }
 
+.account_info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.account_info .product_dot svg path {
+  stroke: #fff;
+  fill: #fff;
+}
+
+.navbar_balance {
+  transition: 0.3s ease;
+}
+.navbar_balance:hover {
+  color: #cdcdcd;
+}
+
 .burger_btn {
   position: relative;
   display: none;
@@ -209,6 +226,13 @@
 }
 .burger_btn.non-clickable {
   pointer-events: none;
+}
+
+.navbar_username {
+  font-weight: 600;
+}
+.navbar_username:hover {
+  text-decoration: underline;
 }
 
 @media screen and (max-width: 800px) {

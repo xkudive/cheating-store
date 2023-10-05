@@ -7,7 +7,8 @@ import logo from "../images/logo.webp";
 
 export default function Navbar() {
 
-    let [burgerOpen, setBurgerOpen] = React.useState(false)
+    let [burgerOpen, setBurgerOpen] = React.useState(false);
+    let [isAuthorized, setIsAuthorized] = React.useState(false);
 
     const linkStagger = {
         initial: {
@@ -75,7 +76,22 @@ export default function Navbar() {
                 </ul>
                 <div className="nav_mobile">
                     <div className="authorization">
-                        <Link to="/"><div className="login">Sign in</div></Link>
+                        {isAuthorized ? 
+                            <div className="account_info">
+                                <Link to="/"><span className="navbar_balance">{"0"}$</span></Link>
+                                <span className="product_dot">
+                                    <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none">
+                                        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                                        <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+                                        <g id="SVGRepo_iconCarrier">
+                                            <path fill="#000000" d="M8 3a5 5 0 100 10A5 5 0 008 3z"></path>
+                                        </g>
+                                    </svg>
+                                </span>
+                                <Link to="/"><span className="navbar_username">{"Fringillidae"}</span></Link>
+                            </div> :
+                            <Link to="/profile"><div className="login">Sign in</div></Link>
+                        }
                     </div>
                     <div className="burger_btn" onClick={() => {
                         document.body.setAttribute("overflow", "hidden")
