@@ -5,7 +5,6 @@ import logo from "../images/logo_small.webp"
 import logo_text from "../images/logo_text.png"
 
 export default function Footer() {
-    console.log()
     return(
         <div className="footer box">
             <div className="container">

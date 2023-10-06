@@ -83,7 +83,28 @@
 }
 
 .price_cost{
+    display: flex;
+    align-items: center;
+    gap: 12px;
     font-size: 20px;
     font-weight: 600;
     transition: 0.4s ease;
+}
+
+
+.previous_price{
+    font-size: 16px;
+    color: #216196;
+    position: relative;
+
+    &:before{
+        content: "";
+        position: absolute;
+        left: -5%;
+        height: 1px;
+        width: 110%;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #216196;
+    }
 }

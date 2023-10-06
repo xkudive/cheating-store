@@ -4,6 +4,12 @@
   background: #1B2627;
   display: flex;
 }
+.profile_settings .burger_btn {
+  position: absolute;
+  top: 32px;
+  right: 24px;
+  z-index: 990;
+}
 
 .profile_sidebar {
   display: flex;
@@ -54,6 +60,16 @@
   width: 216px;
   height: 100%;
   -webkit-mask-image: linear-gradient(180deg, #fff calc(100% - 48px), transparent);
+}
+.profile_sidebar_links::-webkit-scrollbar {
+  width: 5px;
+}
+.profile_sidebar_links::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0);
+}
+.profile_sidebar_links::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.3);
 }
 .profile_sidebar_links a {
   display: flex;
@@ -110,14 +126,56 @@
 @media screen and (max-width: 800px) {
   .profile_sidebar {
     position: fixed;
-    top: 0;
     left: -264px;
-    transition: 0.4s;
+    top: 0;
+    height: 100%;
     background: #1B2627;
+    transition: 0.4s ease;
   }
   .profile_sidebar.active {
     left: 0px;
   }
+}
+.backdrop {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  height: 100svh;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0);
+  pointer-events: none;
+  transition: 0.4s ease;
+  z-index: 1000;
+}
+.backdrop.active {
+  background: rgba(0, 0, 0, 0.4);
+  pointer-events: all;
+}
+
+.profile_information {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.profile_information_label {
+  display: flex;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 100%;
+  position: relative;
+  height: 48px;
+  align-items: center;
+}
+.profile_information_label:before {
+  content: "";
+  width: 100%;
+  position: absolute;
+  height: 1px;
+  bottom: -24px;
+  left: 0;
+  background: #2C3D3F;
 }
 
 /*# sourceMappingURL=Profile.css.map */

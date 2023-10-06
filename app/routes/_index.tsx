@@ -22,8 +22,8 @@ export default function Index() {
             <Navbar />
             <Hero_new />
             <Products />
-            {/* <Pricing /> */}
-            {/* <PriceBox /> */}
+            <Pricing />
+            <PriceBox />
             <Footer />
         </>
     );

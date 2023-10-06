@@ -2,13 +2,16 @@ import React from "react";
 import { motion } from "framer-motion";
 
 export interface LayoutProps  { 
-    children: React.ReactNode
+    children: React.ReactNode;
+    closeAnimation: Function;
+    modalOpen: boolean;
  }
 
-export default function Backdrop({children}: LayoutProps) {
+export default function Backdrop({children, closeAnimation, modalOpen}: LayoutProps) {
     return(
-        <div className="backdrop">
-
-        </div>
+        <motion.div className={`backdrop ${modalOpen ? "active" : ""}`}
+            onClick={() => closeAnimation()}>
+                {children}
+        </motion.div>
     )
 }

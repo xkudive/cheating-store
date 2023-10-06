@@ -14,7 +14,10 @@ export default function PriceBox() {
                     </div>
                     <div className="price_subscription_time">1 day</div>
                 </div>
-                <div className="price_cost">12$</div>
+                <div className="price_cost">
+                    <div className="previous_price">$20</div>
+                    <div className="current_price">$12</div>
+                </div>
             </div>
         </div>
     )
