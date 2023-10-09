@@ -32,6 +32,7 @@ let Notifications = [
 
 interface notificationInfo {
     closeNotification: Function;
+    notificationPlus: Function;
     oneNotification: Function;
     notificationRead: boolean;
     index: number;
@@ -44,7 +45,7 @@ interface notificationInfo {
     };
 }
 
-export function NotificationBox({notificationInfo, index, notificationRead, oneNotification, closeNotification}: notificationInfo) {
+export function NotificationBox({notificationInfo, index, notificationRead, oneNotification, closeNotification, notificationPlus}: notificationInfo) {
     let [read, setRead] = React.useState(notificationRead);
     let [moreOpen, setMoreOpen] = React.useState(false)
 
@@ -81,17 +82,23 @@ export function NotificationBox({notificationInfo, index, notificationRead, oneN
                         key={moreOpen+""}
                     >
                         <div className="more_options_button notifications_read" onClick={(e) => {
+                            e.stopPropagation()
                             setRead(true)
                             setMoreOpen(false)
-                            e.stopPropagation()
                             if(read === true) return
                             oneNotification()
                         }}>Read</div>
                         <div className="more_options_button notifications_clear" onClick={(e) => {
-                            closeNotification(index)
-                            oneNotification()
-                            setMoreOpen(false)
                             e.stopPropagation()
+                            closeNotification(index)
+                            setMoreOpen(false)
+                            if(read === true) {
+                                setRead(false)
+                                oneNotification()
+                                setTimeout(() => {notificationPlus()})
+                            } else {
+                                oneNotification()
+                            }
                         }}>Clear</div>
                     </motion.div>
                 }
@@ -160,9 +167,14 @@ export default function Navbar() {
         setNotificationsRead(true)
     }
 
+    function readOneNotificationPlus() {
+        if(notificationCount = 0) return;
+        setNotificationCount(notificationCount => notificationCount + 1)
+    }
+
     function readOneNotification() {
         if(notificationCount = 0) return;
-        setNotificationCount(notificationCount => notificationCount -1)
+        setNotificationCount(notificationCount => notificationCount - 1)
     }
 
     function openDropdown() {
@@ -250,7 +262,7 @@ export default function Navbar() {
                                 </div>
                                 <div className="notifications">
                                     {notificationArray.length ? 
-                                        notificationArray.map((e,i) => <NotificationBox notificationInfo={e} index={i} notificationRead={notificationsRead} oneNotification={readOneNotification} closeNotification={closeNotification}/>)
+                                        notificationArray.map((e,i) => <NotificationBox notificationInfo={e} index={i} notificationRead={notificationsRead} oneNotification={readOneNotification} closeNotification={closeNotification} notificationPlus={readOneNotificationPlus} />)
                                         : 
                                         <div className="notifications_empty">No Older Notifications</div>
                                     }
