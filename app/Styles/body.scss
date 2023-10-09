@@ -71,11 +71,17 @@
   color-scheme: dark;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   display: flex;
   flex-direction: column;
   background: #070731;
+  -webkit-overflow-anchor: none;
+  overflow-anchor: none;
 
   &[overflow="hidden"] {
     overflow: hidden;

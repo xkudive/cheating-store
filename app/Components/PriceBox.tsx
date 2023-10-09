@@ -5,7 +5,6 @@ export default function PriceBox() {
     const [active, setActive] = React.useState(false);
 
     return(
-        <div className="price_container">
             <div className={`price_box ${active ? "active" : ""}`} onClick={() => setActive(active => !active)}>
                 <div className="price_left">
                     <div className="price_radio_indicator">
@@ -19,6 +18,5 @@ export default function PriceBox() {
                     <div className="current_price">$12</div>
                 </div>
             </div>
-        </div>
     )
 } 

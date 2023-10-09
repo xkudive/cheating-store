@@ -181,18 +181,59 @@
 .account_info {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 8px;
 }
 .account_info .product_dot svg path {
   stroke: #fff;
   fill: #fff;
 }
 
-.navbar_balance {
-  transition: 0.3s ease;
+.navbar_icons {
+  display: flex;
+  padding: 12px 16px;
+  border-radius: 16px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+  transition: 0.4s ease;
+  cursor: pointer;
 }
-.navbar_balance:hover {
-  color: #cdcdcd;
+.navbar_icons:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.navbar_notifications {
+  padding: 12px;
+  display: flex;
+  position: relative;
+}
+.navbar_notifications svg {
+  width: 24px;
+  height: 24px;
+}
+
+.notification_count {
+  display: flex;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 24px;
+  height: 24px;
+  border-radius: 9999px;
+  background: #b33861;
+  font-size: 14px;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar_username {
+  font-weight: 600;
+  color: #58e9ff;
+}
+
+.navbar_balance {
+  color: #70ffc1;
 }
 
 .burger_btn {
@@ -228,14 +269,186 @@
   pointer-events: none;
 }
 
-.navbar_username {
-  font-weight: 600;
+.backdrop_navbar {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2));
+  z-index: -1;
 }
-.navbar_username:hover {
-  text-decoration: underline;
+.backdrop_navbar .container {
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 88px 24px 0 24px;
 }
 
-@media screen and (max-width: 800px) {
+.notification_menu {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  width: 100%;
+  max-width: 480px;
+  background: #1F366A;
+}
+
+.notification_top {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.notification_label {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.notification_close {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+.notification_close svg {
+  width: 100%;
+  height: 100%;
+}
+.notification_close svg path {
+  fill: #fff;
+  transition: 0.3s ease;
+}
+.notification_close:hover svg path {
+  fill: #aaaaaa;
+}
+
+.notifications {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.notification_box {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 12px 16px;
+  border-radius: 12px;
+  transition: 0.4s ease;
+}
+.notification_box:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.notification_content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.notification_indicator {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 16px;
+  height: 16px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: #5384ff;
+}
+.dot.pulse {
+  position: absolute;
+  opacity: 1;
+  animation: dotPulse 2s ease infinite;
+}
+
+.notification_info {
+  width: 100%;
+}
+.notification_info .dot {
+  display: inline-block;
+  margin: 0px 8px 4px 8px;
+  background: #fff;
+  width: 4px;
+  height: 4px;
+}
+
+.notification_message {
+  display: inline;
+}
+
+.notification_date {
+  display: inline;
+}
+
+.notification_more {
+  padding: 8px;
+  border-radius: 8px;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+.notification_more:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+.notification_more svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.notification_buttons {
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 24px;
+  display: flex;
+  gap: 8px;
+}
+
+.notification_button {
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: 0.3s;
+}
+.notification_button:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.notifications_read {
+  color: #5384ff;
+}
+
+.notifications_clear {
+  color: #de4779;
+}
+
+@keyframes dotPulse {
+  0% {
+    scale: 1;
+    opacity: 1;
+  }
+  50%, 100% {
+    scale: 2.5;
+    opacity: 0;
+  }
+}
+@media screen and (max-width: 1080px) {
   .navbar_ul {
     display: none;
   }
@@ -249,6 +462,84 @@
 @media screen and (max-width: 640px) {
   .login {
     padding: 8px 16px;
+  }
+  .navbar_icons {
+    padding: 8px 16px;
+  }
+  .navbar_notifications {
+    padding: 8px;
+  }
+  .navbar_notifications svg {
+    width: 24px;
+    height: 24px;
+  }
+  .notification_count {
+    top: -8px;
+    right: -8px;
+    font-size: 14px;
+  }
+  .navbar_username {
+    font-size: 16px;
+  }
+  .navbar_balance {
+    font-size: 16px;
+  }
+  .account_info {
+    gap: 8px;
+  }
+}
+@media screen and (max-width: 460px) {
+  .login {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+  .navbar_icons {
+    padding: 8px 12px;
+    border-radius: 12px;
+  }
+  .navbar_notifications {
+    padding: 8px;
+  }
+  .navbar_notifications svg {
+    width: 18px;
+    height: 18px;
+  }
+  .notification_count {
+    top: -6px;
+    right: -6px;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+  }
+  .navbar_username {
+    font-size: 12px;
+  }
+  .navbar_balance {
+    font-size: 12px;
+  }
+  .account_info {
+    gap: 4px;
+  }
+}
+@media screen and (max-width: 380px) {
+  .nav_mobile {
+    gap: 24px;
+  }
+  .login {
+    padding: 8px 8px;
+  }
+  .navbar_icons {
+    padding: 8px 8px;
+  }
+  .navbar_notifications {
+    padding: 8px;
+  }
+  .navbar_notifications svg {
+    width: 16px;
+    height: 16px;
+  }
+  .account_info {
+    gap: 4px;
   }
 }
 
