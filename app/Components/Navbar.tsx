@@ -31,10 +31,9 @@ let Notifications = [
 ]
 
 interface notificationInfo {
+    updateComponent: number;
     closeNotification: Function;
-    notificationPlus: Function;
-    oneNotification: Function;
-    notificationRead: boolean;
+    readNotification: Function;
     index: number;
     notificationInfo: {
         username: string
@@ -45,14 +44,13 @@ interface notificationInfo {
     };
 }
 
-export function NotificationBox({notificationInfo, index, notificationRead, oneNotification, closeNotification, notificationPlus}: notificationInfo) {
-    let [read, setRead] = React.useState(notificationRead);
+export function NotificationBox({notificationInfo, index, readNotification, updateComponent, closeNotification}: notificationInfo) {
+    let [read, setRead] = React.useState(notificationInfo.read);
     let [moreOpen, setMoreOpen] = React.useState(false)
 
     React.useEffect(() => {
-        if(notificationRead !== true) return
-        setRead(true)
-    }, [notificationRead])
+        setRead(notificationInfo.read)
+    }, [updateComponent])
 
     return(
         <div className="notification_box">
@@ -82,23 +80,13 @@ export function NotificationBox({notificationInfo, index, notificationRead, oneN
                         key={moreOpen+""}
                     >
                         <div className="more_options_button notifications_read" onClick={(e) => {
+                            notificationInfo.read = true
+                            readNotification(notificationInfo, index)
                             e.stopPropagation()
-                            setRead(true)
-                            setMoreOpen(false)
-                            if(read === true) return
-                            oneNotification()
                         }}>Read</div>
                         <div className="more_options_button notifications_clear" onClick={(e) => {
-                            e.stopPropagation()
                             closeNotification(index)
-                            setMoreOpen(false)
-                            if(read === true) {
-                                setRead(false)
-                                oneNotification()
-                                setTimeout(() => {notificationPlus()})
-                            } else {
-                                oneNotification()
-                            }
+                            e.stopPropagation()
                         }}>Clear</div>
                     </motion.div>
                 }
@@ -109,11 +97,12 @@ export function NotificationBox({notificationInfo, index, notificationRead, oneN
 }
 
 export default function Navbar() {
-    let [notificationArray, setNotificationArray] = React.useState(Notifications);
+    let [notificationArray, setNotificationArray] = React.useState([...Notifications]);
     let [notificationsRead, setNotificationsRead] = React.useState(false);
+    let [updateComponentCount, setUpdateComponentCount] = React.useState(0);
     let [burgerOpen, setBurgerOpen] = React.useState(false);
     let [isAuthorized, setIsAuthorized] = React.useState(true);
-    let [notificationCount, setNotificationCount] = React.useState(notificationArray.length);
+    let [notificationCount, setNotificationCount] = React.useState((notificationArray.filter(e => e.read === false)).length);
     let [notificationDropdown, setNotificationDropdown] = React.useState(false);
 
     const linkStagger = {
@@ -158,24 +147,24 @@ export default function Navbar() {
         setBurgerOpen(false)
     }
     
-    function closeNotification(i: number) {
-        Notifications.splice(i,1)
-        setNotificationArray(Notifications)
+    function closeNotification(index: number) {
+        Notifications.splice(index, 1)
+        setNotificationArray([...Notifications])
     }
 
-    function readNotifications() {
-        setNotificationsRead(true)
+    function readOneNotification(notificationInfo: any, index: number) {
+        Notifications[index] = notificationInfo;
+        setNotificationArray([...Notifications])
     }
 
-    function readOneNotificationPlus() {
-        if(notificationCount = 0) return;
-        setNotificationCount(notificationCount => notificationCount + 1)
+    function updateNotificationCount() {
+        setNotificationCount(notificationArray.filter(e => e.read === false).length)
     }
 
-    function readOneNotification() {
-        if(notificationCount = 0) return;
-        setNotificationCount(notificationCount => notificationCount - 1)
-    }
+    React.useEffect(() => {
+        updateNotificationCount()
+        setUpdateComponentCount(updateComponentCount => updateComponentCount + 1)
+    }, [notificationArray])
 
     function openDropdown() {
         setNotificationDropdown(true)
@@ -262,20 +251,19 @@ export default function Navbar() {
                                 </div>
                                 <div className="notifications">
                                     {notificationArray.length ? 
-                                        notificationArray.map((e,i) => <NotificationBox notificationInfo={e} index={i} notificationRead={notificationsRead} oneNotification={readOneNotification} closeNotification={closeNotification} notificationPlus={readOneNotificationPlus} />)
+                                        notificationArray.map((e,i) => <NotificationBox notificationInfo={e} index={i} readNotification={readOneNotification} updateComponent={updateComponentCount} closeNotification={closeNotification} />)
                                         : 
                                         <div className="notifications_empty">No Older Notifications</div>
                                     }
                                 </div>
                                 <div className="notification_buttons">
                                     <div className="notification_button notifications_read" onClick={() => {
-                                        setNotificationsRead(true);
-                                        setNotificationCount(0)
-                                        readNotifications()
+                                        Notifications.forEach(e => e.read = true);
+                                        setNotificationArray([...Notifications])
                                     }}>Read All</div>
                                     <div className="notification_button notifications_clear" onClick={() => {
-                                        setNotificationArray([])
-                                        setNotificationCount(0)
+                                        Notifications = Notifications.splice(0, Notifications.length);
+                                        setNotificationArray([...Notifications])
                                     }}>Clear All</div>
                                 </div>
                             </div>
