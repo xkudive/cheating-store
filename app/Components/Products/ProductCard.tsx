@@ -29,6 +29,14 @@ export default function ProductCard({id, array}: Id){
     let featuresRef = React.useRef(null);
     let [imageOpened, setImageOpened] = React.useState(false)
 
+    function getSubscription(e: string) {
+        if(e === "1") return e + " day"
+        if(e === "3") return e + " days"
+        if(e === "7") return e + " days"
+        if(e === "30") return e + " days"
+        if(e === "Lifetime") return e
+    }
+
     return(
         <motion.div className="product_card"
             initial={{opacity: 0}}
@@ -103,13 +111,25 @@ export default function ProductCard({id, array}: Id){
                         }
                     </motion.div>
                 </div>
+                <div className="product_card_cheat_features subscription" ref={featuresRef}>
+                    <motion.div 
+                        className="product_card_cheat_features_container"
+                        dragConstraints={featuresRef}
+                        whileDrag={{cursor: "grabbing"}}
+                        drag="x"
+                    >
+                        {
+                            array[parseInt(id)].subscription.map((e,i) => <span key={"span"+i}>{getSubscription(e)}</span>)
+                        }
+                    </motion.div>
+                </div>
                 <div className="product_card_cheat_images">
                     <ProductImages array={array[parseInt(id)].cheat_images} imageOpened={() => setImageOpened(imageOpened => !imageOpened)}/>
                 </div>
                 <div className="product_card_cheat_description">
                     {array[parseInt(id)].description}
                 </div>
-                <span className="product_view_button"><Link to="/">From {array[parseInt(id)].prices[0]}$</Link></span>
+                <span className="product_view_button"><Link to="/">From <span className="product_view_button_price">${array[parseInt(id)].prices[0]}</span></Link></span>
             </div>
         </motion.div>
     )

@@ -352,6 +352,14 @@
     }
 }
 
+.product_view_button_price{
+    color: #53f29b;
+
+    &.red{
+        color: #e65e5e;
+    }
+}
+
 .products_category{
     margin-top: 48px;
     display: flex;
@@ -389,6 +397,10 @@
     overflow: hidden;
     padding-top: 16px;
     cursor: grab;
+
+    &.subscription{
+        padding-top: 8px;
+    }
 }
 
 .product_card_cheat_features_container{
