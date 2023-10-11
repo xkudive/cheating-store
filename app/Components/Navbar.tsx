@@ -101,7 +101,7 @@ export default function Navbar() {
     let [notificationsRead, setNotificationsRead] = React.useState(false);
     let [updateComponentCount, setUpdateComponentCount] = React.useState(0);
     let [burgerOpen, setBurgerOpen] = React.useState(false);
-    let [isAuthorized, setIsAuthorized] = React.useState(false);
+    let [isAuthorized, setIsAuthorized] = React.useState(true);
     let [notificationCount, setNotificationCount] = React.useState((notificationArray.filter(e => e.read === false)).length);
     let [notificationDropdown, setNotificationDropdown] = React.useState(false);
 
