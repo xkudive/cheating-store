@@ -121,7 +121,7 @@ export default function Profile() {
                         <div className="profile_sidebar">
                             <div className="profile_user">
                                 <div className="profile_user_logo"><img src={avatar} alt="" /></div>
-                                <div className="profile_user_text">Fringillidae</div>
+                                <div className="profile_user_text">dadaya</div>
                             </div>
                             <div className="profile_sidebar_links">
                                 <Link to="store">
