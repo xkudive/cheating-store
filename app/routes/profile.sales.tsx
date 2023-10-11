@@ -1,9 +1,9 @@
 import React from "react";  
 
-export default function Keys() {
+export default function Sales() {
     return(
         <div className="profile_information">
-            <div className="profile_information_label">Keys</div>
+            <div className="profile_information_label">Sales</div>
         </div>
     )
 }
