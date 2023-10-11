@@ -180,23 +180,23 @@ export default function Navbar() {
             <div className="container">
                 <Link to="/" className="navbar_logo"><img src={logo} alt="" /></Link>
                 <ul className="navbar_ul">
-                    <Link to="/games">
+                    <Link to="/">
                         <li>Marketplace</li>
                         <li>Marketplace</li>
                     </Link>
-                    <Link to="/subscriptions">
+                    <Link to="/subscription">
                         <li>Subscriptions</li>
                         <li>Subscriptions</li>
                     </Link>
-                    <Link to="/disputes">
+                    <Link to="/">
                         <li>Disputes</li>
                         <li>Disputes</li>
                     </Link>
-                    <a href="https://discord.com/invite/RgVdCZfhnS" target="_blank" rel="noreferrer">
+                    <a href="http://discordapp.com/users/495853583103819800/" target="_blank" rel="noreferrer">
                         <li>Discord</li>
                         <li>Discord</li>
                     </a>
-                    <Link to="/faq">
+                    <Link to="/">
                         <li>FAQ</li>
                         <li>FAQ</li>
                     </Link>
@@ -222,7 +222,7 @@ export default function Navbar() {
                                     </AnimatePresence>
                                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M18.7491 9.70957V9.00497C18.7491 5.13623 15.7274 2 12 2C8.27256 2 5.25087 5.13623 5.25087 9.00497V9.70957C5.25087 10.5552 5.00972 11.3818 4.5578 12.0854L3.45036 13.8095C2.43882 15.3843 3.21105 17.5249 4.97036 18.0229C9.57274 19.3257 14.4273 19.3257 19.0296 18.0229C20.789 17.5249 21.5612 15.3843 20.5496 13.8095L19.4422 12.0854C18.9903 11.3818 18.7491 10.5552 18.7491 9.70957Z" stroke="#fff" strokeWidth="1.5"></path> <path opacity="0.5" d="M7.5 19C8.15503 20.7478 9.92246 22 12 22C14.0775 22 15.845 20.7478 16.5 19" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round"></path> </g></svg>
                                 </div>
-                                <Link to="/profile/balance"><span className="navbar_icons navbar_balance"><span>M0$</span></span></Link>
+                                <Link to="/profile"><span className="navbar_icons navbar_balance"><span>M0$</span></span></Link>
                                 <Link to="/profile/store"><span className="navbar_icons navbar_username"><span>dadaya</span></span></Link>
                             </div> :
                             <Link to="/"><div className="login" onClick={() => setIsAuthorized(true)}>Sign in</div></Link>
@@ -262,7 +262,7 @@ export default function Navbar() {
                                         setNotificationArray([...Notifications])
                                     }}>Read All</div>
                                     <div className="notification_button notifications_clear" onClick={() => {
-                                        Notifications = Notifications.splice(0, Notifications.length);
+                                        Notifications.length = 0
                                         setNotificationArray([...Notifications])
                                     }}>Clear All</div>
                                 </div>
@@ -293,7 +293,7 @@ export default function Navbar() {
                                 animate="open"
                                 exit="initial"
                             >
-                                <Link to="/games">
+                                <Link to="/">
                                     <motion.li
                                         variants={linkStagger}
                                         onClick={() => closeNavbar()}
@@ -301,7 +301,7 @@ export default function Navbar() {
                                         Marketplace
                                     </motion.li>
                                 </Link>
-                                <Link to="/subscriptions">
+                                <Link to="/subscription">
                                     <motion.li
                                         variants={linkStagger}
                                         onClick={() => closeNavbar()}
@@ -309,7 +309,7 @@ export default function Navbar() {
                                         Subscriptions
                                     </motion.li>
                                 </Link>
-                                <Link to="/disputes">
+                                <Link to="/">
                                     <motion.li
                                         variants={linkStagger}
                                         onClick={() => closeNavbar()}
@@ -317,7 +317,7 @@ export default function Navbar() {
                                         Disputes
                                     </motion.li>
                                 </Link>
-                                <a href="https://discord.com/invite/RgVdCZfhnS" target="_blank" rel="noreferrer">
+                                <a href="http://discordapp.com/users/495853583103819800/" target="_blank" rel="noreferrer">
                                     <motion.li
                                         variants={linkStagger}
                                         onClick={() => closeNavbar()}
@@ -325,7 +325,7 @@ export default function Navbar() {
                                         Discord
                                     </motion.li>
                                 </a>
-                                <Link to="/faq">
+                                <Link to="/">
                                     <motion.li
                                         variants={linkStagger}
                                         onClick={() => closeNavbar()}

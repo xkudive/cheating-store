@@ -353,7 +353,10 @@
 }
 
 .product_view_button_price{
-    color: #53f29b;
+    
+    &.green{
+        color: #53f29b;
+    }
 
     &.red{
         color: #e65e5e;
@@ -718,8 +721,8 @@
 .product_card_image{
     position: relative;
     display: flex;
-    width: 120px;
-    height: 67.5px;
+    width: 100px;
+    height: calc(100px / 100 * 55.25);
     border-radius: 8px;
     overflow: hidden;
     cursor: grab;

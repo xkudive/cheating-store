@@ -323,7 +323,7 @@
   text-align: center;
 }
 
-.product_view_button_price {
+.product_view_button_price.green {
   color: #53f29b;
 }
 .product_view_button_price.red {
@@ -667,8 +667,8 @@
 .product_card_image {
   position: relative;
   display: flex;
-  width: 120px;
-  height: 67.5px;
+  width: 100px;
+  height: 55.25px;
   border-radius: 8px;
   overflow: hidden;
   cursor: grab;

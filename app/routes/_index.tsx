@@ -22,7 +22,7 @@ export default function Index() {
             <Navbar />
             <Hero_new />
             <Products />
-            <Pricing />
+            {/* <Pricing /> */}
             {/* <PriceBox /> */}
             <Footer />
         </>
