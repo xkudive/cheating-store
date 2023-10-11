@@ -111,18 +111,6 @@ export default function ProductCard({id, array}: Id){
                         }
                     </motion.div>
                 </div>
-                <div className="product_card_cheat_features subscription" ref={featuresRef}>
-                    <motion.div 
-                        className="product_card_cheat_features_container"
-                        dragConstraints={featuresRef}
-                        whileDrag={{cursor: "grabbing"}}
-                        drag="x"
-                    >
-                        {
-                            array[parseInt(id)].subscription.map((e,i) => <span key={"span"+i}>{getSubscription(e)}</span>)
-                        }
-                    </motion.div>
-                </div>
                 <div className="product_card_cheat_images">
                     <ProductImages array={array[parseInt(id)].cheat_images} imageOpened={() => setImageOpened(imageOpened => !imageOpened)}/>
                 </div>
