@@ -63,7 +63,7 @@ export default function Profile() {
                             <div className={`profile_sidebar ${modalOpen ? "active" : ""}`} onClick={(e) => e.stopPropagation()}>
                                 <div className="profile_user">
                                     <div className="profile_user_logo"><img src={avatar} alt="" /></div>
-                                    <div className="profile_user_text">Fringillidae</div>
+                                    <div className="profile_user_text">xkudive</div>
                                 </div>
                                 <div className="profile_sidebar_links">
                                     <Link to="store" onClick={() => closeModal()}>
