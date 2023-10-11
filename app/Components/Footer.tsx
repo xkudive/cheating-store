@@ -21,9 +21,10 @@ export default function Footer() {
                     <div className="footer_right">
                         <ul>
                             <li className="footer_right_title">Links</li>
-                            <li><Link to="#products">Marketplace</Link></li>
-                            <li><Link to="/">Disputes archive</Link></li>
-                            <li><Link to="https://discord.com/invite/RgVdCZfhnS">Discord</Link></li>
+                            <li><Link to="/">Marketplace</Link></li>
+                            <li><Link to="/subscription">Subscription</Link></li>
+                            <li><Link to="/">Disputes</Link></li>
+                            <li><Link to="http://discordapp.com/users/495853583103819800/">Discord</Link></li>
                             <li><Link to="/">FAQ</Link></li>
                         </ul>
                     </div>
