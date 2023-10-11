@@ -22,9 +22,9 @@ let Notifications = [
         read: false
     },
     {
-        username: "Fringillidae",
+        username: "Allah",
         message: "has disputed a payment for",
-        amount: "21.00",
+        amount: "1.00",
         date: "Oct 6",
         read: false
     }
