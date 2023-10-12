@@ -82,10 +82,12 @@ export function NotificationBox({notificationInfo, index, readNotification, upda
                         <div className="more_options_button notifications_read" onClick={(e) => {
                             notificationInfo.read = true
                             readNotification(notificationInfo, index)
+                            setMoreOpen(false)
                             e.stopPropagation()
                         }}>Read</div>
                         <div className="more_options_button notifications_clear" onClick={(e) => {
                             closeNotification(index)
+                            setMoreOpen(false)
                             e.stopPropagation()
                         }}>Clear</div>
                     </motion.div>
