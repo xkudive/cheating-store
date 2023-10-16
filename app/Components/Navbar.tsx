@@ -103,7 +103,7 @@ export default function Navbar() {
     let [notificationsRead, setNotificationsRead] = React.useState(false);
     let [updateComponentCount, setUpdateComponentCount] = React.useState(0);
     let [burgerOpen, setBurgerOpen] = React.useState(false);
-    let [isAuthorized, setIsAuthorized] = React.useState(true);
+    let [isAuthorized, setIsAuthorized] = React.useState(false);
     let [notificationCount, setNotificationCount] = React.useState((notificationArray.filter(e => e.read === false)).length);
     let [notificationDropdown, setNotificationDropdown] = React.useState(false);
 
@@ -227,7 +227,7 @@ export default function Navbar() {
                                 <Link to="/profile"><span className="navbar_icons navbar_balance"><span>$0</span></span></Link>
                                 <Link to="/profile/store"><span className="navbar_icons navbar_username"><span>dadaya</span></span></Link>
                             </div> :
-                            <Link to="/"><div className="login" onClick={() => setIsAuthorized(true)}>Sign in</div></Link>
+                            <Link to="/"><div className="login">Sign in</div></Link>
                         }
                     </div>
                     <div className="burger_btn" onClick={() => {
